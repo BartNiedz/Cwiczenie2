@@ -1,0 +1,12 @@
+kilka ciekawych propozycji na ćwiczenia
+
+1. Zrobić ładny HTML + CSS dla listy kategorii
+2. Zrobić ładny HTML + CSS dla listy audiobooków
+3. Zrobić prosty formularz kontaktowy
+ -utworzyć nowy kontroller dla formularza
+ -utworzyć nowy model dla formularza
+ -utworzyć nowy widok dla formularza
+ - podpiąć model pod formularz i przekazać dane z formularza do widoku
+ - po przekazaniu danych z formularza, przekierować użytkownika na stronę Dziękujemy za wypełnienie formularza kontaktowego
+4. Pobrać nowe dane z API wolnelektury
+5. Utworzyć nowy widok z listą pobranych danych
