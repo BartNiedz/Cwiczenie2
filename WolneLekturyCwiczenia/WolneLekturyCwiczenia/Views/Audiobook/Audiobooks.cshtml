@@ -1,0 +1,16 @@
+﻿@model List<Audiobooks>
+
+<div class="row">
+        
+@foreach (var audiobooks in Model)
+{
+        <div class="col-2">
+   <img class="img-fluid" src="@audiobooks.simple_thumb"/>
+
+   <p class="text-center">@audiobooks.author</p>
+   <p class="text-center">@audiobooks.genre</p>
+   <p class="text-center">@audiobooks.title</p>
+        </div>
+}
+       
+</div>

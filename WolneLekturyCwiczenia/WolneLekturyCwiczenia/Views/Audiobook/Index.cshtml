@@ -1,0 +1,12 @@
+﻿@model List<Audiobooks>
+
+<div class="row">
+    <div class="col-2">
+    @foreach (var audiobooks in Model)
+    {
+        @audiobooks.author
+        @audiobooks.genre
+        @audiobooks.title
+    }
+    </div>
+</div>
