@@ -4,8 +4,8 @@
         
 @foreach (var audiobooks in Model)
 {
-        <div class="col-2">
-   <img class="img-fluid" src="@audiobooks.simple_thumb"/>
+        <div class="col-2" style="border-radius:5px; border: 1px solid black; background-color:antiquewhite">
+   <img class="img-fluid p-1" src="@audiobooks.simple_thumb"/>
 
    <p class="text-center">@audiobooks.author</p>
    <p class="text-center">@audiobooks.genre</p>

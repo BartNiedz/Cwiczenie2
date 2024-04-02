@@ -6,12 +6,12 @@
 }
 @foreach (var kategoria in Model)
 {
-    <div class="row">
-        <div class="col-6">
+    <div class="row m-2">
+        <div class="col-6" style="border: 1px solid black; border-radius: 5px; background-color:antiquewhite">
            @kategoria.name
         </div>
-        <div class="col-6">
-            @kategoria.href
+        <div class="col-6" style="border: 1px solid black; border-radius: 5px; background-color:antiquewhite">
+            <a href="@kategoria.href">@kategoria.href</a>
         </div>
     </div>
     
