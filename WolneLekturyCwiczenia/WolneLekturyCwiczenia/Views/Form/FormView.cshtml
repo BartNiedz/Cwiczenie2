@@ -8,65 +8,29 @@
     <title>Index</title>
 </head>
 <body>
-    <div class="alert alert-success" role="alert">
-        @ViewBag.Message
-    </div>
+
    
     <form action="/Form/FormView" method="post" class="row">
-        <table >
-            <tr>
-                <th colspan="2" align="center">Dane:</th>
-            </tr>
-            <tr>
-                <td>E-mail: </td>
-                <td>
-                    @Html.TextBoxFor(m => m.email)
-                </td>
-            </tr>
-            <tr>
-                <td>Imię: </td>
-                <td>
-                    @Html.TextBoxFor(m => m.firstName)
-                </td>
-            </tr>
-            <tr class="mb-2">
-                <td>Nazwisko: </td>
-                <td>
-                    @Html.TextBoxFor(m => m.lastName)
-                </td>
-            </tr>
-            <tr class="mb-2">
-                <td>Treść: </td>
-                <td>
-                    @Html.TextBoxFor(m => m.textarea)
-                </td>
-            </tr>
-            <tr>
-                <td></td>
-                <td><input type="submit" value="Submit" /></td>
-            </tr>
-        </table>
-
-        </form>
-    <form>
+      
         <div class="container row">
             <div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4 col-xxl-4">
                 <label for="exampleFormControlInput1">Adres e-mail</label>
-                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="adres@email.com">
+
+                <input type="email" class="form-control" name="email" id="exampleFormControlInput1" placeholder="adres@email.com">
             </div>
             <div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4 col-xxl-4">
                 <label for="exampleFormControlInput1">Wprowadź imię</label>
-                <input type="name" class="form-control" id="exampleFormControlInput1" placeholder="Imię">
+                <input type="name" class="form-control" name="firstName" id="exampleFormControlInput1" placeholder="Imię">
             </div>
             <div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4 col-xxl-4">
                 <label for="exampleFormControlInput1">Wprowadź nazwisko</label>
-                <input type="name" class="form-control" id="exampleFormControlInput1" placeholder="Nazwisko">
+                <input type="name" class="form-control" name="lastName" id="exampleFormControlInput1" placeholder="Nazwisko">
             </div>
         </div>
         <div class="container form-group">
             <label class="my-2" for="exampleFormControlTextarea1">Treść wiadomości</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" placeholder="Napisz w jakiej sprawie chciałbyś się z nami skontaktować :)"></textarea>
-            <div class="text-center"><button class="btn btn-success mt-2">Wyślij</button></div>
+            <textarea class="form-control" name="textarea" id="exampleFormControlTextarea1" rows="5" placeholder="Napisz w jakiej sprawie chciałbyś się z nami skontaktować :)"></textarea>
+            <div class="text-center"><input type="submit" value="Wyślij" class="btn btn-success mt-2"></input></div>
         </div>
 
     </form>

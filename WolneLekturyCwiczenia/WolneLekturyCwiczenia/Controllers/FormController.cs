@@ -18,9 +18,14 @@ namespace WolneLekturyCwiczenia.Controllers
             string lastName = data.lastName;
             string textarea = data.textarea;
 
-            ViewBag.Message = "Dziekujemy za wypelnienie formularza";
+     
+            return RedirectToAction("FormSent", "Form");
+        }
+        public IActionResult FormSent()
+        {
 
-            return View(data);
+        
+            return View();
         }
     }
 }
