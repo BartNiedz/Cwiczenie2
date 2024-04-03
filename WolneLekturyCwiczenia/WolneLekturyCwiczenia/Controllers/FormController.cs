@@ -11,15 +11,16 @@ namespace WolneLekturyCwiczenia.Controllers
         }
        
         [HttpPost]
-        public IActionResult SaveFormData(FormData data)
+        public IActionResult FormView(FormData data)
         {
             string email = data.email;
             string firstName = data.firstName;
             string lastName = data.lastName;
             string textarea = data.textarea;
-            
 
-            return View();
+            ViewBag.Message = "Dziekujemy za wypelnienie formularza";
+
+            return View(data);
         }
     }
 }

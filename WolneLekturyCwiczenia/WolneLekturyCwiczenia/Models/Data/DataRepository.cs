@@ -26,5 +26,16 @@ namespace WolneLekturyCwiczenia.Models.Data
 
             return data;
         }
+
+        public async Task<List<Epochs>> GetEpochs()
+        {
+            string url = "https://wolnelektury.pl/api/epochs/?format=json";
+
+            HttpClient client = new HttpClient();
+            string response = await client.GetStringAsync(url);
+            var data = JsonConvert.DeserializeObject<List<Epochs>>(response);
+
+            return data;
+        }
     }
 }
