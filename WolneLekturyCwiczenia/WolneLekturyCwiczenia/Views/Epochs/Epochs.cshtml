@@ -1,0 +1,19 @@
+﻿@model List<Epochs>
+@{
+
+}
+@foreach (var epoka in Model)
+{
+    <div class="row m-2">
+        <div class="col-4" style="border: 1px solid black; border-radius: 5px; background-color:antiquewhite">
+            @epoka.name
+        </div>
+        <div class="col-4" style="border: 1px solid black; border-radius: 5px; background-color:antiquewhite">
+            <a href="@epoka.href">@epoka.href</a>
+        </div>
+        <div class="col-4 text-center" style="border: 1px solid black; border-radius: 5px; background-color:antiquewhite">
+            @epoka.slug
+        </div>
+    </div>
+
+}

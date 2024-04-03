@@ -12,31 +12,31 @@
         @ViewBag.Message
     </div>
    
-    <form action="/Form/FormView" method="post">
-        <table cellpadding="0" cellspacing="0">
+    <form action="/Form/FormView" method="post" class="row">
+        <table >
             <tr>
-                <th colspan="2" align="center">Person Details</th>
+                <th colspan="2" align="center">Dane:</th>
             </tr>
             <tr>
-                <td>PersonId: </td>
+                <td>E-mail: </td>
                 <td>
                     @Html.TextBoxFor(m => m.email)
                 </td>
             </tr>
             <tr>
-                <td>Name: </td>
+                <td>Imię: </td>
                 <td>
                     @Html.TextBoxFor(m => m.firstName)
                 </td>
             </tr>
-            <tr>
-                <td>Name: </td>
+            <tr class="mb-2">
+                <td>Nazwisko: </td>
                 <td>
                     @Html.TextBoxFor(m => m.lastName)
                 </td>
             </tr>
-            <tr>
-                <td>City: </td>
+            <tr class="mb-2">
+                <td>Treść: </td>
                 <td>
                     @Html.TextBoxFor(m => m.textarea)
                 </td>
@@ -48,6 +48,28 @@
         </table>
 
         </form>
+    <form>
+        <div class="container row">
+            <div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4 col-xxl-4">
+                <label for="exampleFormControlInput1">Adres e-mail</label>
+                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="adres@email.com">
+            </div>
+            <div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4 col-xxl-4">
+                <label for="exampleFormControlInput1">Wprowadź imię</label>
+                <input type="name" class="form-control" id="exampleFormControlInput1" placeholder="Imię">
+            </div>
+            <div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4 col-xxl-4">
+                <label for="exampleFormControlInput1">Wprowadź nazwisko</label>
+                <input type="name" class="form-control" id="exampleFormControlInput1" placeholder="Nazwisko">
+            </div>
+        </div>
+        <div class="container form-group">
+            <label class="my-2" for="exampleFormControlTextarea1">Treść wiadomości</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" placeholder="Napisz w jakiej sprawie chciałbyś się z nami skontaktować :)"></textarea>
+            <div class="text-center"><button class="btn btn-success mt-2">Wyślij</button></div>
+        </div>
+
+    </form>
 </body>
 </html>
 
