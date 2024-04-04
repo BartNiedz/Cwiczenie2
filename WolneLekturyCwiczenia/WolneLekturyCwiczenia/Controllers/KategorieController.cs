@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using WolneLekturyCwiczenia.Models;
 using WolneLekturyCwiczenia.Models.Data;
 
 namespace WolneLekturyCwiczenia.Controllers
@@ -20,7 +21,15 @@ namespace WolneLekturyCwiczenia.Controllers
 
             return View(listakategorii);
         }
+        // Kategorie/KategorieAudiobooks?epoka=
+        public async Task<IActionResult> KategorieAudiobooks(string kategoria)
+        {
+            var audiobooks = await _data.GetAudiobooks();
 
-    
+            IEnumerable<Audiobooks> query = audiobooks.Where(audiobooks => audiobooks.genre == kategoria);
+
+            return View(query);
+        }
+
     }
 }

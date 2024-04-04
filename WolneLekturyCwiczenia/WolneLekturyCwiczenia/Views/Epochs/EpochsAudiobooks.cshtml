@@ -1,0 +1,23 @@
+﻿@model IEnumerable<Audiobooks>
+<div class="row container-fluid">
+    @if (Model.Count() == 0)
+    {
+        <p>Nie znalezniono audiobookow w tej epoce</p>
+    }
+    else
+    {
+        foreach (var audiobooks in Model)
+        {
+            <div class="col-2 mx-2" style="border-radius:5px; border: 1px solid black; background-color:antiquewhite">
+                <img class="img-fluid p-1" src="@audiobooks.simple_thumb" />
+
+                <p class="text-center">@audiobooks.author</p>
+                <p class="text-center">@audiobooks.genre</p>
+                <p class="text-center">@audiobooks.title</p>
+                <p class="text-center">@audiobooks.epoch</p>
+            </div>
+        }
+    }
+    
+
+</div>

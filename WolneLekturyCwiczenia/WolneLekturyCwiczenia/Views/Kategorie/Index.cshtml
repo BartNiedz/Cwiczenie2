@@ -1,14 +1,12 @@
 ﻿@model List<Categories>
-@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
 @{
+
 }
 @foreach (var kategoria in Model)
 {
     <div class="row m-2">
         <div class="col-6" style="border: 1px solid black; border-radius: 5px; background-color:antiquewhite">
-           @kategoria.name
+            <a href="/Kategorie/KategorieAudiobooks?kategoria=@kategoria.name">@kategoria.name</a>
         </div>
         <div class="col-6" style="border: 1px solid black; border-radius: 5px; background-color:antiquewhite">
             <a href="@kategoria.href">@kategoria.href</a>

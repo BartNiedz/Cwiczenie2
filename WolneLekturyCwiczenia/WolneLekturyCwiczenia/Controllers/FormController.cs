@@ -9,7 +9,7 @@ namespace WolneLekturyCwiczenia.Controllers
         {
             return View();
         }
-       
+
         [HttpPost]
         public IActionResult FormView(FormData data)
         {
