@@ -13,12 +13,16 @@ namespace WolneLekturyCwiczenia.Controllers
 
         }
 
-        //audiobook/audiobooks
-        public async Task<IActionResult> Audiobooks()
+        //audiobook/audiobooks?page=1
+        public async Task<IActionResult> Audiobooks(int page)
         {
-            var audiobooks = await _data.GetAudiobooks();
-
-            return View(audiobooks);
+            int take = 12;
+            int skip = (page - 1) * take;            
+            List<Audiobooks> audiobooks = await _data.GetAudiobooks();
+                      
+            List<Audiobooks> strona = audiobooks.Skip(skip).Take(take).ToList();
+           
+            return View(strona);
         }
 
         //audiobook/details
@@ -26,9 +30,9 @@ namespace WolneLekturyCwiczenia.Controllers
         {
             var audiobooks = await _data.GetAudiobooks();
 
-            Audiobooks first = audiobooks.First(audiobooks => audiobooks.slug == detale);
-
-            return View(first);
+            Audiobooks kawa = audiobooks.First(audiobooks => audiobooks.slug == detale);
+            
+            return View(kawa);
         }
     }
 }
