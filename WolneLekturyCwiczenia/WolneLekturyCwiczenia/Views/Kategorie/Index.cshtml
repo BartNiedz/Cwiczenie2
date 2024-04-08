@@ -14,3 +14,17 @@
     </div>
     
 }
+<div class="row" style="text-align:center; display:block;">
+    @if (ViewBag.Previous > 0)
+    {
+        <a type="button" class="btn btn-outline-secondary col-6"
+           href="/kategorie/index?page=@ViewBag.Previous" style="width:auto">Poprzednia</a>
+    }
+
+    @if (ViewBag.Next <= ViewBag.LiczbaStron)
+    {
+        <a type="button" class="btn btn-outline-secondary col-6"
+           href="/kategorie/index?page=@ViewBag.Next" style="width:auto">Następna</a>
+    }
+
+</div>

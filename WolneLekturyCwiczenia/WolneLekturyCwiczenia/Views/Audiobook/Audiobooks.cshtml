@@ -20,6 +20,16 @@
 }    
 </div>
 <div class="row" style="text-align:center; display:block;">
-    <a type="button" class="btn btn-outline-secondary col-6" href="#" style="width:auto">Poprzednia</a>
-    <a type="button" class="btn btn-outline-secondary col-6" href="/audiobook/audiobooks?page=1" style="width:auto">Następna</a>
+    @if (ViewBag.PoprzedniaStrona > 0)
+    {
+        <a type="button" class="btn btn-outline-secondary col-6" 
+        href="/audiobook/audiobooks?page=@ViewBag.PoprzedniaStrona" style="width:auto">Poprzednia</a>
+    }
+    
+    @if (ViewBag.NastepnaStrona <= ViewBag.PageCount)
+    {
+        <a type="button" class="btn btn-outline-secondary col-6" 
+        href="/audiobook/audiobooks?page=@ViewBag.NastepnaStrona" style="width:auto">Następna</a>
+    }
+    
 </div>

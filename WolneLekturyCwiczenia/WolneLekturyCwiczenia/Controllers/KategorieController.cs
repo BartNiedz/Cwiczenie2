@@ -15,11 +15,23 @@ namespace WolneLekturyCwiczenia.Controllers
         }
 
         // kategorie/index
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int page = 1)
         {
-            var listakategorii = await _data.GetCategories();
+            int take = 6;
+            int skip = (page - 1) * take;
 
-            return View(listakategorii);
+            var listakategorii = await _data.GetCategories();
+            var strona = listakategorii.Skip(skip).Take(take).ToList();
+
+            int allCount = listakategorii.Count();
+            int pageCount = (allCount / take) + 1;
+
+            ViewBag.LiczbaStron = pageCount;
+            ViewBag.Next = page + 1;
+            ViewBag.Previous = page - 1;
+
+
+            return View(strona);
         }
         // Kategorie/KategorieAudiobooks?epoka=
         public async Task<IActionResult> KategorieAudiobooks(string kategoria)
