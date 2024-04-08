@@ -23,8 +23,9 @@ namespace WolneLekturyCwiczenia.Controllers
                       
             List<Audiobooks> strona = audiobooks.Skip(skip).Take(take).ToList();
             
-            int allCount = audiobooks.Count();
-            int pageCount = (allCount / take) + 1;
+            //int allCount = audiobooks.Count();
+            //int pageCount = (allCount / take) + 1;
+            int pageCount = (audiobooks.Count() / take) + 1;
              
             ViewBag.PageCount = pageCount;
 
