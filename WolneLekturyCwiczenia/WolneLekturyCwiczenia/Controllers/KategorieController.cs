@@ -26,6 +26,7 @@ namespace WolneLekturyCwiczenia.Controllers
             int allCount = listakategorii.Count();
             int pageCount = (allCount / take) + 1;
 
+            ViewBag.Page = page;
             ViewBag.LiczbaStron = pageCount;
             ViewBag.Next = page + 1;
             ViewBag.Previous = page - 1;

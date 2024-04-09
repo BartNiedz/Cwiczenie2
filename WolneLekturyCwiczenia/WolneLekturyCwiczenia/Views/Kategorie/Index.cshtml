@@ -1,5 +1,6 @@
 ﻿@model List<Categories>
 @{
+    int raz = 1;
 
 }
 @foreach (var kategoria in Model)
@@ -14,17 +15,39 @@
     </div>
     
 }
-<div class="row" style="text-align:center; display:block;">
-    @if (ViewBag.Previous > 0)
-    {
-        <a type="button" class="btn btn-outline-secondary col-6"
-           href="/kategorie/index?page=@ViewBag.Previous" style="width:auto">Poprzednia</a>
-    }
+<nav aria-label="...">
+    <ul class="pagination justify-content-center active">
+        <li class="page-item">
+            @if (ViewBag.Previous > 0)
+            {
+                <a href="/kategorie/index?page=@ViewBag.Previous" class="page-link">Poprzednia</a>
+            }
+        </li>
 
-    @if (ViewBag.Next <= ViewBag.LiczbaStron)
-    {
-        <a type="button" class="btn btn-outline-secondary col-6"
-           href="/kategorie/index?page=@ViewBag.Next" style="width:auto">Następna</a>
-    }
-
-</div>
+        @while (raz <= ViewBag.LiczbaStron)
+        {
+            if (ViewBag.Page == raz)
+            {
+                <li class="page-item active"><a class="page-link" href="/kategorie/index?page=@raz">@raz</a></li>
+            }
+            else
+            {
+                <li class="page-item "><a class="page-link" href="/kategorie/index?page=@raz">@raz</a></li>
+            }
+            
+            raz++;            
+        }
+        
+        
+            
+        
+        
+        
+        @if (ViewBag.Next <= ViewBag.LiczbaStron)
+        {
+            <li class="page-item">
+                <a class="page-link" href="/kategorie/index?page=@ViewBag.Next">Następna</a>
+            </li>
+        }        
+    </ul>
+</nav>

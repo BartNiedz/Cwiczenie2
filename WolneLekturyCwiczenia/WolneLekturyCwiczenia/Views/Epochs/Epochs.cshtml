@@ -1,7 +1,10 @@
 ﻿@model List<Epochs>
 @{
-
+    int webe = 20;
+    string test = "bartek";
+    int strona = 1;
 }
+<h1>@test</h1>
 @foreach (var epoka in Model)
 {
     <div class="row m-2">
@@ -15,5 +18,32 @@
             @epoka.slug
         </div>
     </div>
-
 }
+<nav aria-label="...">
+    <ul class="pagination justify-content-center active">
+        <li class="page-item">
+        @if (ViewBag.PreviousPageEpochs > 0)
+        {
+        <a href="/epochs/epochs?page=@ViewBag.PreviousPageEpochs" class="page-link">Poprzednia</a>
+        }        
+        </li>
+        @while (strona <= ViewBag.PageCountEpochs)
+        {
+            if (ViewBag.PageNumber == strona){
+                <li class="page-item active"><a class="page-link" href="/epochs/epochs?page=@strona">@strona</a></li>
+            }
+            else
+            {
+                <li class="page-item"><a class="page-link" href="/epochs/epochs?page=@strona">@strona</a></li>
+            }
+            strona++;            
+
+        }
+        @if (ViewBag.NextPageEpochs <= ViewBag.PageCountEpochs)
+        {
+        <li class="page-item">
+        <a class="page-link" href="/epochs/epochs?page=@ViewBag.NextPageEpochs">Następna</a>
+        </li>
+        }
+    </ul>
+</nav>

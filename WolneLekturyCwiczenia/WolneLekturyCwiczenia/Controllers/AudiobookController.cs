@@ -26,7 +26,9 @@ namespace WolneLekturyCwiczenia.Controllers
             //int allCount = audiobooks.Count();
             //int pageCount = (allCount / take) + 1;
             int pageCount = (audiobooks.Count() / take) + 1;
-             
+
+            ViewBag.PageNumber = page;
+
             ViewBag.PageCount = pageCount;
 
             ViewBag.NastepnaStrona = page +1;
