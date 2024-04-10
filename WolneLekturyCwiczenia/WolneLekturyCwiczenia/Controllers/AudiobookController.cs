@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.VisualBasic;
 using WolneLekturyCwiczenia.Models;
 using WolneLekturyCwiczenia.Models.Data;
 
@@ -43,6 +44,25 @@ namespace WolneLekturyCwiczenia.Controllers
            
             return View(strona);
         }
+
+        public async Task<IActionResult> Audiobooks(string select)
+        {
+            List<Epochs> lista = await _data.GetEpochs();
+            
+            ViewBag.ListaEpok = lista;
+
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Audiobooks(string szukaj)
+        {
+            List<Audiobooks> lista = await _data.GetAudiobooks();
+            List<Audiobooks> filtr = lista.Where(lista => lista.title.ToLower().Contains(szukaj.ToLower())).ToList();
+
+            return View(filtr);
+        }
+        
 
         //audiobook/details
         public async Task<IActionResult> Details(string detale)
