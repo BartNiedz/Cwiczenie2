@@ -1,23 +1,33 @@
 ﻿@model List<Audiobooks>
 @{
-    
+    List<Epochs> lista = ViewBag.ListaEpok as List<Epochs>;
 }
 <form action="/audiobook/audiobooks" method="post">
-    <label for="audiobookFilter" class="form-label ms-2">Wyszukaj audiobook:</label>
-    <div class="row m-2">
-        <input type="text" class="form-control col-5 me-2" id="categoryFilter" name="szukaj" style="width: 25%">
-        <button type="submit" class="btn btn-primary col-1">Wyślij</button>
+    <div class="row g-2 align-items-center">
+        <div class="col text-center">
+            <label for="audiobookFilter" class="form-label ms-2">Wyszukaj audiobook:</label>
+        </div>
+        <div class="col">
+            <input class="form-control" type="text" id="categoryFilter" name="szukaj" style="width:100%">
+        </div>
+        <div class="col text-center">
+            <label for="audioselect">Wybierz epoke:</label>
+        </div>
+        <div class="col">
+            <select class="form-select" name="epoki" id="audioselect">
+                <option value="wybierz epoke:">wybierz epoke</option>
+                @foreach (var nazwaEpoki in lista)
+                {
+                <option value="@nazwaEpoki.name">@nazwaEpoki.name</option>               
+                }                
+            </select>
+        </div>
+        <div class="col text-center">
+            <button type="submit" class="btn btn-primary">Wyślij</button>
+        </div>
     </div>
 </form>
-<form action="/audiobook/audiobooks">
-    <label for="audioselect">Wybierz epoke:</label>
-    <select name="select" id="audioselect">
-        <option value="@ViewBag.ListaEpok">@ViewBag.ListaEpok</option>
-        
-    </select>
-    <br><br>
-    <input type="submit" value="Submit">
-</form>
+
 <div class="row container-fluid">
         
 @foreach (var audiobooks in Model)

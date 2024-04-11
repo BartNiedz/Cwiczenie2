@@ -35,17 +35,19 @@ namespace WolneLekturyCwiczenia.Controllers
             ViewBag.NastepnaStrona = page +1;
 
             ViewBag.PoprzedniaStrona = page -1;
-          
 
-                       
-       
-            
-            
-           
+
+            List<Epochs> listaEpok = await _data.GetEpochs();
+
+            ViewBag.ListaEpok = listaEpok;
+
+
+
+
             return View(strona);
         }
 
-        public async Task<IActionResult> Audiobooks(string select)
+        public async Task<IActionResult> Select(string select)
         {
             List<Epochs> lista = await _data.GetEpochs();
             
@@ -55,12 +57,23 @@ namespace WolneLekturyCwiczenia.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Audiobooks(string szukaj)
+        public async Task<IActionResult> Audiobooks(string szukaj, string epoki)
         {
-            List<Audiobooks> lista = await _data.GetAudiobooks();
-            List<Audiobooks> filtr = lista.Where(lista => lista.title.ToLower().Contains(szukaj.ToLower())).ToList();
+            List<Epochs> listaEpok = await _data.GetEpochs();
+            ViewBag.ListaEpok = listaEpok;
+            if (string.IsNullOrEmpty(szukaj))
+            {
+                szukaj = "";
+            }
+            
+                List<Audiobooks> lista = await _data.GetAudiobooks();
+                List<Audiobooks> filtr = lista.Where(lista => lista.title.ToLower().Contains(szukaj.ToLower())).Where(x => x.epoch.Contains(epoki)).ToList();
 
-            return View(filtr);
+
+
+
+                return View(filtr);
+            
         }
         
 
