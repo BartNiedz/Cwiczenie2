@@ -1,6 +1,7 @@
 ﻿@model List<Audiobooks>
 @{
-    List<Epochs> lista = ViewBag.ListaEpok as List<Epochs>;
+    List<Epochs> listaEpok = ViewBag.ListaEpok as List<Epochs>;
+    List<Categories> listaKategorii = ViewBag.ListaKategorii as List<Categories>;
 }
 <form action="/audiobook/audiobooks" method="post">
     <div class="row g-2 align-items-center">
@@ -8,18 +9,30 @@
             <label for="audiobookFilter" class="form-label ms-2">Wyszukaj audiobook:</label>
         </div>
         <div class="col">
-            <input class="form-control" type="text" id="categoryFilter" name="szukaj" style="width:100%">
+            <input class="form-control" for="name" type="text" id="categoryFilter" name="szukaj" style="width:100%">
         </div>
-        <div class="col text-center">
+        <div class="col text-center" >
             <label for="audioselect">Wybierz epoke:</label>
         </div>
         <div class="col">
-            <select class="form-select" name="epoki" id="audioselect">
-                <option value="wybierz epoke:">wybierz epoke</option>
-                @foreach (var nazwaEpoki in lista)
+            <select class="form-select" name="epoki" id="epokiselect">    
+                <option ></option>
+                @foreach (var nazwaEpoki in listaEpok.OrderBy(item => item.name))
                 {
-                <option value="@nazwaEpoki.name">@nazwaEpoki.name</option>               
+                <option  value = "@nazwaEpoki.name">@nazwaEpoki.name</option>               
                 }                
+            </select>
+        </div>
+        <div class="col text-center">
+            <label for="audioselect">Wybierz kategorie:</label>
+        </div>
+        <div class="col">
+            <select class="form-select" name="kategorie" id="kategorieselect">
+                <option ></option>
+                @foreach (var nazwaKategorii in listaKategorii.OrderByDescending(item => item.name))
+                {
+                    <option value="@nazwaKategorii.name">@nazwaKategorii.name</option>
+                }
             </select>
         </div>
         <div class="col text-center">

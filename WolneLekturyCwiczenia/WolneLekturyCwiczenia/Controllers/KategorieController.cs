@@ -39,6 +39,10 @@ namespace WolneLekturyCwiczenia.Controllers
         public async Task<IActionResult> Index(string tresc)
         {
             
+            if (string.IsNullOrEmpty(tresc))
+            {
+              tresc = string.Empty;
+            }
             List<Categories> cos = await _data.GetCategories();
             List<Categories> filtr = cos.Where(cos => cos.name.ToLower().Contains(tresc.ToLower())).ToList();
             

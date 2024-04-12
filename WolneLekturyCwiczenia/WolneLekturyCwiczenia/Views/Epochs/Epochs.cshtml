@@ -4,7 +4,13 @@
     string test = "bartek";
     int strona = 1;
 }
-<h1>@test</h1>
+<form action="/epochs/epochs" method="post">
+    <label for="epochsFilter" class="form-label ms-2">Wyszukaj epoki:</label>
+    <div class="row m-2">
+        <input type="text" class="form-control col-5 me-2" id="epochFilter" name="tresc" style="width: 25%">
+        <button type="submit" class="btn btn-primary col-1">Wyślij</button>
+    </div>
+</form>
 @foreach (var epoka in Model)
 {
     <div class="row m-2">

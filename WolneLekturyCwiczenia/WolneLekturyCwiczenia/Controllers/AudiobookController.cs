@@ -41,33 +41,46 @@ namespace WolneLekturyCwiczenia.Controllers
 
             ViewBag.ListaEpok = listaEpok;
 
+            List<Categories> listaKategorii = await _data.GetCategories();
+
+            ViewBag.ListaKategorii = listaKategorii;
+
 
 
 
             return View(strona);
         }
-
-        public async Task<IActionResult> Select(string select)
-        {
-            List<Epochs> lista = await _data.GetEpochs();
-            
-            ViewBag.ListaEpok = lista;
-
-            return View();
-        }
+                
 
         [HttpPost]
-        public async Task<IActionResult> Audiobooks(string szukaj, string epoki)
+        public async Task<IActionResult> Audiobooks(string szukaj, string epoki, string kategorie)
         {
+
+            List<Categories> listaKategorii = await _data.GetCategories();
+
+            ViewBag.ListaKategorii = listaKategorii;
+
+            
+
+
             List<Epochs> listaEpok = await _data.GetEpochs();
+
             ViewBag.ListaEpok = listaEpok;
+
             if (string.IsNullOrEmpty(szukaj))
             {
                 szukaj = "";
             }
-            
-                List<Audiobooks> lista = await _data.GetAudiobooks();
-                List<Audiobooks> filtr = lista.Where(lista => lista.title.ToLower().Contains(szukaj.ToLower())).Where(x => x.epoch.Contains(epoki)).ToList();
+            if (string.IsNullOrEmpty(epoki))
+            {
+                epoki = "";
+            }
+            if (string.IsNullOrEmpty(kategorie))
+            {
+                kategorie = "";
+            }
+            List<Audiobooks> lista = await _data.GetAudiobooks();
+                List<Audiobooks> filtr = lista.Where(lista => lista.title.ToLower().Contains(szukaj.ToLower())).Where(x => x.epoch.Contains(epoki)).Where(y => y.genre.Contains(kategorie)).ToList();
 
 
 
