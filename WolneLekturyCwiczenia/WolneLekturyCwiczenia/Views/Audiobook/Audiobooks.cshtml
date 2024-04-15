@@ -3,13 +3,14 @@
     List<Epochs> listaEpok = ViewBag.ListaEpok as List<Epochs>;
     List<Categories> listaKategorii = ViewBag.ListaKategorii as List<Categories>;
 }
+<div class="container mt-2">
 <form action="/audiobook/audiobooks" method="post">
     <div class="row g-2 align-items-center">
         <div class="col text-center">
             <label for="audiobookFilter" class="form-label ms-2">Wyszukaj audiobook:</label>
         </div>
         <div class="col">
-            <input class="form-control" for="name" type="text" id="categoryFilter" name="szukaj" style="width:100%">
+                <input class="form-control" for="name" type="text" id="categoryFilter" name="szukaj" style="width:100%" value="@ViewBag.Szukaj">
         </div>
         <div class="col text-center" >
             <label for="audioselect">Wybierz epoke:</label>
@@ -73,4 +74,5 @@
            href="/audiobook/audiobooks?page=@ViewBag.NastepnaStrona" style="width:auto">Następna</a>
     }
 
+</div>
 </div>

@@ -2,10 +2,11 @@
 @{
     int raz = 1;    
 }
+<div class="container">
 <form action="/kategorie/index" method="post">
     <label for="categoryFilter" class="form-label ms-2">Wyszukaj kategorie:</label>  
         <div class="row m-2">
-        <input type="text" class="form-control col-5 me-2" id="categoryFilter" name="tresc" style="width: 25%">
+        <input type="text" class="form-control col-5 me-2" id="categoryFilter" value="@ViewBag.Content" name="tresc" style="width: 25%">
         <button type="submit" class="btn btn-primary col-1">Wyślij</button>
         </div>
 </form>
@@ -49,3 +50,4 @@
         }        
     </ul>
 </nav>
+</div>

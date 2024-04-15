@@ -38,6 +38,7 @@ namespace WolneLekturyCwiczenia.Controllers
             List<Epochs> epochs = await _data.GetEpochs();
             List<Epochs> filtr = epochs.Where(cos => cos.name.ToLower().Contains(tresc.ToLower())).ToList();
 
+            ViewBag.Content = tresc;
 
             return View(filtr);
         }

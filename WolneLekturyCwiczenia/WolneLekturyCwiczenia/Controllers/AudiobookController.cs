@@ -60,7 +60,9 @@ namespace WolneLekturyCwiczenia.Controllers
 
             ViewBag.ListaKategorii = listaKategorii;
 
-            
+            ViewBag.Szukaj = szukaj;
+            ViewBag.Epoki = epoki;  
+            ViewBag.Kategorie = kategorie;
 
 
             List<Epochs> listaEpok = await _data.GetEpochs();

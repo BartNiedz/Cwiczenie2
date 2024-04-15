@@ -37,5 +37,27 @@ namespace WolneLekturyCwiczenia.Models.Data
 
             return data;
         }
+
+        public async Task<Nasa> GetNasa()
+        {
+            string url = "https://api.nasa.gov/planetary/apod?api_key=2SX9vQSInsOipkckLY9eCMTEscvmPc3e5vyKnSnP";
+
+            HttpClient client = new HttpClient();
+            string response = await client.GetStringAsync(url);
+            var data = JsonConvert.DeserializeObject<Nasa>(response);
+
+            return data;
+        }
+
+        public async Task<Mars> GetMars()
+        {
+            string url = "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=2SX9vQSInsOipkckLY9eCMTEscvmPc3e5vyKnSnP";
+
+            HttpClient client = new HttpClient();
+            string response = await client.GetStringAsync(url);
+            var data = JsonConvert.DeserializeObject<Mars>(response);
+
+            return data;
+        }
     }
 }

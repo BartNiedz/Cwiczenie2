@@ -15,7 +15,7 @@ namespace WolneLekturyCwiczenia.Controllers
         }
 
 
-        // kategorie/index
+        // kategorie/index 
         public async Task<IActionResult> Index(int page = 1)
         {            
             int take = 6;
@@ -45,6 +45,8 @@ namespace WolneLekturyCwiczenia.Controllers
             }
             List<Categories> cos = await _data.GetCategories();
             List<Categories> filtr = cos.Where(cos => cos.name.ToLower().Contains(tresc.ToLower())).ToList();
+
+            ViewBag.Content = tresc;
             
 
             return View(filtr);
