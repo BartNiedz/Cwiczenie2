@@ -2,8 +2,8 @@
 
 namespace WolneLekturyCwiczenia.Models
 {
-    public class Mars
-    {
+    
+    
         public class Camera
         {
             public int id { get; set; }
@@ -28,7 +28,7 @@ namespace WolneLekturyCwiczenia.Models
             public Rover rover { get; set; }
         }
 
-        public class Root
+        public class Mars
         {
             public List<Photo> photos { get; set; }
         }
@@ -44,5 +44,5 @@ namespace WolneLekturyCwiczenia.Models
             public int total_photos { get; set; }
             public List<Camera> cameras { get; set; }
         }
-    }
+    
 }

@@ -2,7 +2,13 @@
 @{
 
 }
-
-<div>
-    <h1> daasd</h1>
+<div class="container-fluid row">
+@foreach (var mars in Model.photos)
+{
+    <div class="col-4 container-fluid" >
+    <img class="img-fluid" src="@mars.img_src" />
+    <p>Earth date: @mars.earth_date</p>
+    <p>ID: @mars.id</p>
+    </div>
+}
 </div>
