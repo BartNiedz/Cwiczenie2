@@ -28,21 +28,7 @@ namespace WolneLekturyCwiczenia.Controllers
 
             double wynikDzielenia = asd.Divide();
 
-            Person person = new Person("piotr", "nowak", 2001-01-02);
 
-             string imie = person.Name(); 
-
-            DateTime wiek = DateTime.Now;
-
-            
-            Person wiek = new Person(20010102);
-
-             
-            DateTime dob = wiek.Age();
-
-             DateTime age = ( - dob) / 10000;
-            
-            
 
             return View();
         }
