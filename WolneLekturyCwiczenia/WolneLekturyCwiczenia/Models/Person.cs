@@ -10,19 +10,27 @@ namespace WolneLekturyCwiczenia.Models
         public int code { get; set; }
         public DateTime date_of_birth { get; set; }
         public string city { get; set; }
+        public List<Person> dzieci { get; set; }
 
         public Person(string _name, string _surname, DateTime _date_of_birth)
         {
             name = _name;
             surname = _surname;
             date_of_birth = _date_of_birth;
+            dzieci = new List<Person>();
         }
-        
+        public void AddChild(Person child)
+        {
+            dzieci.Add(child);
+        }
         public DateTime Age() 
         {
             return date_of_birth;
         }
-
+        public int GetAge()
+        {
+            return DateTime.Now.Year - date_of_birth.Year;
+        }
 
         public string Name()
         {

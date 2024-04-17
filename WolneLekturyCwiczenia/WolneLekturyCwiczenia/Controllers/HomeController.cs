@@ -23,14 +23,44 @@ namespace WolneLekturyCwiczenia.Controllers
 
         public IActionResult Index()
         {
-             Asd asd = new Asd(2,3);
+            // klasa Asd
+            Asd asd = new Asd(2, 3);
 
-             int wynik = asd.Add();
+            int wynik = asd.Add();
 
-             int wynikMnozenia = asd.Multiply();
+            int wynikMnozenia = asd.Multiply();
 
             double wynikDzielenia = asd.Divide();
 
+            // klasa Person
+            Person person = new Person("piotr", "nowak", new DateTime(2001, 04, 11));
+
+            DateTime date = new DateTime(2001, 04, 11);
+
+            int wiek = person.GetAge();
+
+            string imie = person.Name();
+
+            Person dziecko1 = new Person("Ania", "Kowal", new DateTime(2012, 09, 08));                       
+            Person dziecko2 = new Person("Basia", "Nowak", new DateTime(2014, 01, 02));            
+            Person dziecko3 = new Person("Rafa³", "Mickiewicz", new DateTime(2017, 04, 12));
+
+            
+            person.AddChild(dziecko1);
+            person.AddChild(dziecko2);
+            person.AddChild(dziecko3); 
+            
+            //klasa Prostokat          
+            Prostokat prostokat = new Prostokat(10, 21);
+
+            int polePowierzchni = prostokat.PP();
+
+            int obwod = prostokat.Obw();
+
+            int longer = prostokat.Longer();         
+
+            
+            // sql
             Testowa t = new Testowa()
             {
                 Message = "testa"
@@ -38,7 +68,7 @@ namespace WolneLekturyCwiczenia.Controllers
 
             _sql.SaveTestowa(t);
 
-            return View();
+            return View(person);
         }
 
         public IActionResult Privacy()
