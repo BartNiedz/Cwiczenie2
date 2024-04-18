@@ -6,8 +6,27 @@
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-    @foreach (var dziecko in Model.dzieci)
-    {
-        <p>@dziecko.name @dziecko.surname</p>
-    }
+   <div class="row container-fluid ">
+    <div class="col-4">
+        <h1>Dzieci:</h1>
+        @foreach (var dziecko in Model.dzieci)
+        {
+            <p>@dziecko.name @dziecko.surname</p>
+        }
+    </div>
+    <div class="col-4">
+        <h1>Pracownicy:</h1>
+        @foreach (var pracownik in Model.pracownicy)
+        {
+            <p>@pracownik.name @pracownik.surname</p>
+        }
+    </div>
+        <div class="col-4">
+        <h1>Dzieci:</h1>
+        @foreach (var klient in Model.klienci)
+        {
+            <p>@klient.name @klient.surname</p>
+        }
+    </div>
+    </div>
 </div>

@@ -40,7 +40,7 @@ namespace WolneLekturyCwiczenia.Controllers
             int wiek = person.GetAge();
 
             string imie = person.Name();
-
+            // dzieci
             Person dziecko1 = new Person("Ania", "Kowal", new DateTime(2012, 09, 08));                       
             Person dziecko2 = new Person("Basia", "Nowak", new DateTime(2014, 01, 02));            
             Person dziecko3 = new Person("Rafa³", "Mickiewicz", new DateTime(2017, 04, 12));
@@ -49,7 +49,24 @@ namespace WolneLekturyCwiczenia.Controllers
             person.AddChild(dziecko1);
             person.AddChild(dziecko2);
             person.AddChild(dziecko3); 
+
+            //pracownicy
+            Person pracownik1 = new Person("Adam", "Wiœniewski", new DateTime (1998,09,04));
+            Person pracownik2 = new Person("Jacek", "Lewandowski", new DateTime(1987, 05, 16));
+            Person pracownik3 = new Person("Karolina", "D¹browska", new DateTime(1994, 04, 01));
             
+            person.AddEmployee(pracownik1);
+            person.AddEmployee(pracownik2);
+            person.AddEmployee(pracownik3);
+
+            //klienci
+            Person klient1 = new Person("Joanna", "Wójcik", new DateTime(1978, 03, 21));
+            Person klient2 = new Person("Kamil", "Kamiñski", new DateTime(1965, 05, 20));
+            Person klient3 = new Person("Artur", "Wróblewski", new DateTime(1971, 07, 07));
+
+            person.AddCustomer(klient1);
+            person.AddCustomer(klient2);
+            person.AddCustomer(klient3);
             //klasa Prostokat          
             Prostokat prostokat = new Prostokat(10, 21);
 
