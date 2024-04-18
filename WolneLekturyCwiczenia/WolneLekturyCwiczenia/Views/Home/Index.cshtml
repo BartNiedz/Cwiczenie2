@@ -6,26 +6,26 @@
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-   <div class="row container-fluid ">
+   <div class="row container-fluid">
     <div class="col-4">
         <h1>Dzieci:</h1>
         @foreach (var dziecko in Model.dzieci)
         {
-            <p>@dziecko.name @dziecko.surname</p>
+            <p>@dziecko.name @dziecko.surname, @dziecko.GetAge()</p>
         }
     </div>
     <div class="col-4">
         <h1>Pracownicy:</h1>
         @foreach (var pracownik in Model.pracownicy)
         {
-            <p>@pracownik.name @pracownik.surname</p>
+            <p>@pracownik.name @pracownik.surname, @pracownik.GetAge()</p>
         }
     </div>
         <div class="col-4">
-        <h1>Dzieci:</h1>
+        <h1>Klienci:</h1>
         @foreach (var klient in Model.klienci)
         {
-            <p>@klient.name @klient.surname</p>
+            <p>@klient.name @klient.surname, @klient.GetAge()</p>
         }
     </div>
     </div>
