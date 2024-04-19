@@ -8,5 +8,6 @@ namespace WolneLekturyCwiczenia.Models.SQL.Table
     {
         public int Id { get; set; }
         public string Message { get; set; }
+
     }
 }

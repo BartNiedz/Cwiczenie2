@@ -1,5 +1,6 @@
 ﻿using NPoco;
 using MySqlConnector;
+using WolneLekturyCwiczenia.Models.SQL.Table;
 
 namespace WolneLekturyCwiczenia.Models.SQL
 {
@@ -19,6 +20,19 @@ namespace WolneLekturyCwiczenia.Models.SQL
         private IDatabase GetDatabase()
         {
             return new Database(ConnectionString, DatabaseType.MySQL, MySqlConnectorFactory.Instance);
+        }
+
+        public void CreateClick(Clicks model)
+        {
+            IDatabase db = GetDatabase();
+
+            db.Insert(model);
+        }
+        public void CreateCategory(Category model)
+        {
+            IDatabase db = GetDatabase();
+
+            db.Save(model);
         }
     }
 }

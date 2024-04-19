@@ -20,7 +20,7 @@ namespace WolneLekturyCwiczenia.Controllers
             _logger = logger;
             _data = data;
         }
-
+        
         public IActionResult Index()
         {
             // klasa Asd
@@ -68,6 +68,7 @@ namespace WolneLekturyCwiczenia.Controllers
             person.AddCustomer(klient1);
             person.AddCustomer(klient2);
             person.AddCustomer(klient3);
+
             //klasa Prostokat          
             Prostokat prostokat = new Prostokat(10, 21);
 
@@ -75,9 +76,11 @@ namespace WolneLekturyCwiczenia.Controllers
 
             int obwod = prostokat.Obw();
 
-            int longer = prostokat.Longer();         
+            int longer = prostokat.Longer();
+            //klasa Klient
+          //  Klient klient6 = new Klient("Adam", "Nowak", "PKO BP");
 
-            
+          //  string nazwaBanku = klient6.BankName();
             // sql
             Testowa t = new Testowa()
             {
@@ -88,7 +91,7 @@ namespace WolneLekturyCwiczenia.Controllers
 
             return View(person);
         }
-
+        
         public IActionResult Privacy()
         {
             return View();
