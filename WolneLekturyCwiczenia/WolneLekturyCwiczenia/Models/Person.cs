@@ -9,6 +9,7 @@ namespace WolneLekturyCwiczenia.Models
         public string adress { get; set; }
         public int code { get; set; }
         public DateTime date_of_birth { get; set; }
+        public DateTime Date { get; }
         public string city { get; set; }
         public List<Person> dzieci { get; set; }
         public List<Person> pracownicy { get; set; }
@@ -42,8 +43,8 @@ namespace WolneLekturyCwiczenia.Models
         public int GetAge()
         {
             return DateTime.Now.Year - date_of_birth.Year;
-        }
-
+        }        
+        
         public string Name()
         {
             return string.Format("{0} {1}", name, surname);

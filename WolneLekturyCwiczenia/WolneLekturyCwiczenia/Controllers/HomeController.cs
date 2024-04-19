@@ -35,6 +35,7 @@ namespace WolneLekturyCwiczenia.Controllers
             // klasa Person
             Person person = new Person("piotr", "nowak", new DateTime(2001, 04, 11));
 
+
             DateTime date = new DateTime(2001, 04, 11);
 
             int wiek = person.GetAge();
@@ -58,7 +59,7 @@ namespace WolneLekturyCwiczenia.Controllers
             person.AddEmployee(pracownik1);
             person.AddEmployee(pracownik2);
             person.AddEmployee(pracownik3);
-
+            
             //klienci
             Person klient1 = new Person("Joanna", "Wójcik", new DateTime(1978, 03, 21));
             Person klient2 = new Person("Kamil", "Kamiñski", new DateTime(1965, 05, 20));

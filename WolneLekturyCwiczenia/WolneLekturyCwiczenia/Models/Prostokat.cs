@@ -1,6 +1,5 @@
-﻿
-
 namespace WolneLekturyCwiczenia.Models
+
 {
     public class Prostokat
     {
