@@ -1,12 +1,30 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WolneLekturyCwiczenia.Models;
 using WolneLekturyCwiczenia.Models.Data;
+using WolneLekturyCwiczenia.Models.SQL;
+using WolneLekturyCwiczenia.Models.SQL.Table;
 
 namespace WolneLekturyCwiczenia.Controllers
 {
     public class EpochsController : Controller
     {
         private IDataRepository _data;
+        public ISQL _bazadanych = new SQLProvider();
+
+        public async Task InsertEpochAsync()
+        {
+            List<Epochs> epochListy = await _data.GetEpochs();
+            foreach (Epochs epoch in epochListy)
+            {
+                Epoch epoch1 = new Epoch();
+                epoch1.Url = epoch.url;
+                epoch1.Name = epoch.name;
+                epoch1.Slug = epoch.slug;
+                epoch1.Href = epoch.href;
+
+                _bazadanych.CreateEpoch(epoch1);
+            }
+        }
         public EpochsController(IDataRepository data)
         {
             _data = data;

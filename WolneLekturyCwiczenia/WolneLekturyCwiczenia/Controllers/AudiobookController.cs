@@ -2,12 +2,40 @@
 using Microsoft.VisualBasic;
 using WolneLekturyCwiczenia.Models;
 using WolneLekturyCwiczenia.Models.Data;
+using WolneLekturyCwiczenia.Models.SQL;
+using WolneLekturyCwiczenia.Models.SQL.Table;
 
 namespace WolneLekturyCwiczenia.Controllers
 {
     public class AudiobookController : Controller
     {
         private IDataRepository _data;
+        public ISQL _bazadanych = new SQLProvider();
+        public async Task InsertAudioAsync()
+        {
+            List<Audiobooks> audioListy = await _data.GetAudiobooks();
+            foreach (Audiobooks audio in audioListy)
+            {
+                Audio audio1 = new Audio();
+                audio1.Kind = audio.kind;
+                audio1.Full_sort_key = audio.full_sort_key;
+                audio1.Title = audio.title;
+                audio1.Url = audio.url;
+                audio1.Cover_color = audio.cover_color;
+                audio1.Author = audio.author;
+                audio1.Cover = audio.cover;
+                audio1.Epoch = audio.epoch;
+                audio1.Href = audio.href;                
+                audio1.Genre = audio.genre;
+                audio1.Simple_thumb = audio.simple_thumb;
+                audio1.Slug = audio.slug;
+                audio1.Cover_thumb = audio.cover_thumb;
+
+
+
+                _bazadanych.CreateAudio(audio1);
+            }
+        }
         public AudiobookController(IDataRepository data)
         {
             _data = data;

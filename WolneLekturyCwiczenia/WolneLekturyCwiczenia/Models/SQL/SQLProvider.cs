@@ -34,5 +34,23 @@ namespace WolneLekturyCwiczenia.Models.SQL
 
             db.Save(model);
         }
+        public void CreateEpoch(Epoch model)
+        {
+            IDatabase db = GetDatabase();
+
+            db.Save(model);
+        }
+        public void CreateAudio(Audio model)
+        {
+            IDatabase db = GetDatabase();
+
+            db.Save(model);
+        }
+        public void CreateFormularz(Formularz model)
+        {
+            IDatabase db = GetDatabase();
+
+            db.Save(model);
+        }
     }
 }
