@@ -1,4 +1,4 @@
-﻿@model List<Epochs>
+﻿@model List<WolneLekturyCwiczenia.Models.SQL.Table.Epoch>
 @{
     int webe = 20;
     string test = "bartek";
@@ -16,13 +16,13 @@
 {
     <div class="row m-2">
         <div class="col-4" style="border: 1px solid black; border-radius: 5px; background-color:antiquewhite">
-            <a href="/Epochs/EpochsAudiobooks?epoka=@epoka.name">@epoka.name</a>
+            <a href="/Epochs/EpochsAudiobooks?epoka=@epoka.Name">@epoka.Name</a>
         </div>
         <div class="col-4" style="border: 1px solid black; border-radius: 5px; background-color:antiquewhite">
-            <a href="@epoka.href">@epoka.href</a>
+            <a href="@epoka.Href">@epoka.Href</a>
         </div>
         <div class="col-4 text-center" style="border: 1px solid black; border-radius: 5px; background-color:antiquewhite">
-            @epoka.slug
+            @epoka.Slug
         </div>
     </div>
 }

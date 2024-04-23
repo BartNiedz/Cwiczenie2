@@ -31,11 +31,11 @@ namespace WolneLekturyCwiczenia.Controllers
 
         }
         //Epochs/Epochs
-        public async Task<IActionResult> Epochs(int page = 1 )
+        public IActionResult Epochs(int page = 1 )
         {
             int take = 6;
             int skip = (page - 1) * take;
-            var epochs = await _data.GetEpochs();
+            var epochs = _bazadanych.GetEpochsDB();
             var strona = epochs.Skip(skip).Take(take).ToList();
             int pageCount = (epochs.Count() / take) + 1;
             ViewBag.PageNumber = page;

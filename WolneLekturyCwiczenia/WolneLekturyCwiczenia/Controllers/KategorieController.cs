@@ -34,12 +34,13 @@ namespace WolneLekturyCwiczenia.Controllers
 
         // kategorie/index 
     
-        public async Task<IActionResult> Index(int page = 1)
+        public IActionResult Index(int page = 1)
         {            
             int take = 6;
             int skip = (page - 1) * take;
 
-            var listakategorii = await _data.GetCategories();
+            var listakategorii = _bazadanych.GetCategory();
+
             var strona = listakategorii.Skip(skip).Take(take).ToList();
 
             int allCount = listakategorii.Count();

@@ -10,5 +10,8 @@ namespace WolneLekturyCwiczenia.Models.SQL
         void CreateEpoch(Epoch model);
         void CreateAudio(Audio model);
         void CreateFormularz(Formularz model);
+        List<Category> GetCategory();
+        List<Epoch> GetEpochsDB();
+        List<Audio> GetAudioDB();
     }
 }

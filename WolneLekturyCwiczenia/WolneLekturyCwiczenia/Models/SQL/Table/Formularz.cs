@@ -1,4 +1,5 @@
-﻿using NPoco;
+﻿using Microsoft.Extensions.Diagnostics.HealthChecks;
+using NPoco;
 
 namespace WolneLekturyCwiczenia.Models.SQL.Table
 {
@@ -12,5 +13,6 @@ namespace WolneLekturyCwiczenia.Models.SQL.Table
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Textarea { get; set; }
+        public List<Formularz> Formularz_ { get; set; }
     }
 }

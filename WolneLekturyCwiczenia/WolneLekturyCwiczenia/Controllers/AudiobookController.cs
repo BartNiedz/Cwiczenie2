@@ -43,14 +43,14 @@ namespace WolneLekturyCwiczenia.Controllers
         }
 
         //audiobook/audiobooks?page=1
-        public async Task<IActionResult> Audiobooks(int page = 1)
+        public IActionResult Audiobooks(int page = 1)
         {
             
             int take = 12;
             int skip = (page - 1) * take;            
-            List<Audiobooks> audiobooks = await _data.GetAudiobooks();
+            List<Audio> audiobooks = _bazadanych.GetAudioDB();
                       
-            List<Audiobooks> strona = audiobooks.Skip(skip).Take(take).ToList();
+            List<Audio> strona = audiobooks.Skip(skip).Take(take).ToList();
             
             //int allCount = audiobooks.Count();
             //int pageCount = (allCount / take) + 1;
@@ -65,11 +65,11 @@ namespace WolneLekturyCwiczenia.Controllers
             ViewBag.PoprzedniaStrona = page -1;
 
 
-            List<Epochs> listaEpok = await _data.GetEpochs();
+            List<Epoch> listaEpok = _bazadanych.GetEpochsDB();
 
             ViewBag.ListaEpok = listaEpok;
 
-            List<Categories> listaKategorii = await _data.GetCategories();
+            List<Category> listaKategorii = _bazadanych.GetCategory();
 
             ViewBag.ListaKategorii = listaKategorii;
 
