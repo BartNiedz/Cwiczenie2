@@ -1,4 +1,7 @@
-﻿@model WolneLekturyCwiczenia.Models.SQL.Table.Formularz
+﻿@model List<WolneLekturyCwiczenia.Models.SQL.Table.Formularz>
+@{
+    
+}
 
 <!DOCTYPE html>
 
@@ -10,8 +13,7 @@
 <body>
 
    <div class="container">
-    <form action="/Form/FormView" method="post" class="row">
-      
+    <form action="/Form/FormView" method="post" class="row">      
         <div class="container row">
             <div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4 col-xxl-4">
                 <label for="exampleFormControlInput1">Adres e-mail</label>
@@ -33,8 +35,33 @@
             <div class="text-center"><input type="submit" value="Wyślij" class="btn btn-success mt-2"></input></div>
         </div>
     </form>
-    </div> 
-       
+    </div>
+    <div class="container">
+    <table class="table">
+        <thead>
+            <th scope="col">ID</th>
+            <th scope="col">Data</th>
+            <th scope="col">Imie</th>
+            <th scope="col">Nazwisko</th>
+            <th scope="col">E-mail</th>
+            <th scope="col">Treść wiadomości</th>
+        </thead>
+        @foreach (var form in Model)
+        {
+           <tbody>
+                <tr>
+                  <th scope="row">@form.FormularzId</th>                  
+                  <td>@form.Date</td>
+                  <td>@form.FirstName</td>
+                  <td>@form.LastName</td>
+                  <td>@form.Email</td>
+                  <td>@form.Textarea</td>
+                </tr>
+            </tbody>
+        }
+
+    </table>
+    </div>
 </body>
 </html>
 

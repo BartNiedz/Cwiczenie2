@@ -81,10 +81,10 @@ namespace WolneLekturyCwiczenia.Controllers
                 
 
         [HttpPost]
-        public async Task<IActionResult> Audiobooks(string szukaj, string epoki, string kategorie)
+        public IActionResult Audiobooks(string szukaj, string epoki, string kategorie)
         {
 
-            List<Categories> listaKategorii = await _data.GetCategories();
+            List<Category> listaKategorii = _bazadanych.GetCategory();
 
             ViewBag.ListaKategorii = listaKategorii;
 
@@ -93,7 +93,7 @@ namespace WolneLekturyCwiczenia.Controllers
             ViewBag.Kategorie = kategorie;
 
 
-            List<Epochs> listaEpok = await _data.GetEpochs();
+            List<Epoch> listaEpok = _bazadanych.GetEpochsDB();
 
             ViewBag.ListaEpok = listaEpok;
 
@@ -109,8 +109,8 @@ namespace WolneLekturyCwiczenia.Controllers
             {
                 kategorie = "";
             }
-            List<Audiobooks> lista = await _data.GetAudiobooks();
-                List<Audiobooks> filtr = lista.Where(lista => lista.title.ToLower().Contains(szukaj.ToLower())).Where(x => x.epoch.Contains(epoki)).Where(y => y.genre.Contains(kategorie)).ToList();
+            List<Audio> lista = _bazadanych.GetAudioDB();
+            List<Audio> filtr = lista.Where(lista => lista.Title.ToLower().Contains(szukaj.ToLower())).Where(x => x.Epoch.Contains(epoki)).Where(y => y.Genre.Contains(kategorie)).ToList();
 
 
 

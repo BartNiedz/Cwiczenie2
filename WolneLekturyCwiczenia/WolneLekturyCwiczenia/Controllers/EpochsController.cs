@@ -47,14 +47,14 @@ namespace WolneLekturyCwiczenia.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Epochs(string tresc)
+        public IActionResult Epochs(string tresc)
         {
             if (string.IsNullOrEmpty(tresc))
             {
                 tresc = string.Empty;
             }
-            List<Epochs> epochs = await _data.GetEpochs();
-            List<Epochs> filtr = epochs.Where(cos => cos.name.ToLower().Contains(tresc.ToLower())).ToList();
+            List<Epoch> epochs = _bazadanych.GetEpochsDB();
+            List<Epoch> filtr = epochs.Where(cos => cos.Name.ToLower().Contains(tresc.ToLower())).ToList();
 
             ViewBag.Content = tresc;
 

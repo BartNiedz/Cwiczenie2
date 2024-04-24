@@ -84,6 +84,14 @@ namespace WolneLekturyCwiczenia.Models.SQL
 
             return audio;
         }
+        public List<Formularz> GetFormularz()
+        {
+            IDatabase db = GetDatabase();
+
+            List<Formularz> formularz = db.Fetch<Formularz>("Select * from Formularz order by Date desc Limit 10");
+
+            return formularz;
+        }
 
     }
 }

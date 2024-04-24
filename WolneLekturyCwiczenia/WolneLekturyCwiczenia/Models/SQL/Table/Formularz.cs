@@ -13,6 +13,6 @@ namespace WolneLekturyCwiczenia.Models.SQL.Table
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Textarea { get; set; }
-        public List<Formularz> Formularz_ { get; set; }
+        public List<Formularz> Formularz_ { get; set; }       
     }
 }

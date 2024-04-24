@@ -10,28 +10,30 @@ namespace WolneLekturyCwiczenia.Controllers
         public ISQL _bazadanych = new SQLProvider();
         public IActionResult FormView()
         {
-            return View();
+            List<Formularz> formList = _bazadanych.GetFormularz();
+            return View(formList);
         }
 
         [HttpPost]
-        public IActionResult FormView(FormData data)
+        public IActionResult FormView(Formularz data)
         {
-            string email = data.email;
-            string firstName = data.firstName;
-            string lastName = data.lastName;
-            string textarea = data.textarea;
+            string email = data.Email;
+            string firstName = data.FirstName;
+            string lastName = data.LastName;
+            string textarea = data.Textarea;
 
             //test wysylania treści do bazy danych
-            Formularz formularz = new Formularz();
-            formularz.Date = DateTime.Now;
-            formularz.Email = email;
-            formularz.FirstName = firstName;
-            formularz.LastName = lastName;
-            formularz.Textarea = textarea;
+                       
+                Formularz formularz = new Formularz();
+                formularz.Date = DateTime.Now;
+                formularz.Email = email;
+                formularz.FirstName = firstName;
+                formularz.LastName = lastName;
+                formularz.Textarea = textarea;
 
-            _bazadanych.CreateFormularz(formularz);
-
-
+                _bazadanych.CreateFormularz(formularz);
+            
+            
      
             return RedirectToAction("FormSent", "Form");
         }
