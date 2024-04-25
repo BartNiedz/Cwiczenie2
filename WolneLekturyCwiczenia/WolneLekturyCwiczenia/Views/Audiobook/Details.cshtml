@@ -1,15 +1,15 @@
-﻿@model WolneLekturyCwiczenia.Models.Audiobooks
+﻿@model WolneLekturyCwiczenia.Models.SQL.Table.Audio
 <div class="container mt-2">
     <div class="row" style="background-color:antiquewhite">
         <div class="col-3" style="border-right: 1px solid black" >
-            <img class="img-fluid" src="@Model.simple_thumb" />
+            <img class="img-fluid" src="@Model.Simple_thumb" />
     </div>
     <div class="col-9">
-        <h1 class="mb-3" style="font-weight: 600">@Model.title</h1>
-        <h2 class="mb-3" style="font-style: italic; font-weight: 600">@Model.author</h2>
-        <h4 style="font-weight: 100">Gatunek: @Model.genre</h4>
-        <h4 style="font-weight: 100">Epoka: @Model.epoch</h4>
-        <h4 class="mb-3" style="font-weight: 100">Rodzaj literacki: @Model.kind</h4>
+        <h1 class="mb-3" style="font-weight: 600">@Model.Title</h1>
+        <h2 class="mb-3" style="font-style: italic; font-weight: 600">@Model.Author</h2>
+        <h4 style="font-weight: 100">Gatunek: @Model.Genre</h4>
+        <h4 style="font-weight: 100">Epoka: @Model.Epoch</h4>
+        <h4 class="mb-3" style="font-weight: 100">Rodzaj literacki: @Model.Kind</h4>
         <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
             Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
