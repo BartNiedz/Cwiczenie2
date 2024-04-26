@@ -30,9 +30,7 @@ namespace WolneLekturyCwiczenia.Models.SQL
         }
         public void CreateCategory(Category model)
         {
-            IDatabase db = GetDatabase();
-            List<Category> category = db.Fetch<Category>("select Name.* from Category where Name isActive = 1");
-
+            IDatabase db = GetDatabase();  
             db.Save(model);
         }
         public void CreateEpoch(Epoch model)
@@ -91,6 +89,12 @@ namespace WolneLekturyCwiczenia.Models.SQL
             List<Formularz> formularz = db.Fetch<Formularz>("Select * from Formularz order by Date desc Limit 10");
 
             return formularz;
+        }
+        public Audio GetDetails(int AudioId)
+        {
+            IDatabase db = GetDatabase();
+            Audio detail = db.FirstOrDefault<Audio>("Select * from Audio where AudioId = @aId", new { @aId = AudioId });
+            return detail;
         }
 
     }

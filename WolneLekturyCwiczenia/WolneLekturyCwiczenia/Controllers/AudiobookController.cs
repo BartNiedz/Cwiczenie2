@@ -121,17 +121,17 @@ namespace WolneLekturyCwiczenia.Controllers
         
 
         //audiobook/details
-        public IActionResult Details(/*int id*/ string detale)
+        public IActionResult Details(int AudioId /*string detale*/)
         {
             //metoda where nie pobierająca całej bazy danych
-            
+
             //var kawa = _bazadanych.GetAudioDB().Where(x => x.AudioId == id);
             //IEnumerable<Audio> kawa = audiobooks.Where(z => z.Slug == detale);
-
+           var kawa = _bazadanych.GetDetails(AudioId);
 
             //dotychczasowa metoda 
-            var audiobooks = _bazadanych.GetAudioDB();
-            Audio kawa = audiobooks.First(audiobooks => audiobooks.Slug == detale);
+            //var audiobooks = _bazadanych.GetAudioDB();
+            //Audio kawa = audiobooks.First(audiobooks => audiobooks.Slug == detale);
 
             return View(kawa);
         }

@@ -14,5 +14,6 @@ namespace WolneLekturyCwiczenia.Models.SQL
         List<Epoch> GetEpochsDB();
         List<Audio> GetAudioDB();
         List<Formularz> GetFormularz();
+        Audio GetDetails(int AudioId);
     }
 }

@@ -7,19 +7,19 @@ namespace WolneLekturyCwiczenia.Controllers
     public class KlikController : Controller
     {
         public ISQL _bazadanych = new SQLProvider();
-        public IActionResult Go(string slug)
+        public IActionResult Go(int AudioId)
         {
             Clicks klik = new Clicks(); 
 
             klik.ClickDate = DateTime.Now;
             klik.Browser = HttpContext.Request.Headers["User-Agent"];
-            klik.AudiobookId = slug;           
+            klik.AudiobookId = AudioId.ToString();           
             
             _bazadanych.CreateClick(klik);
             
             
 
-            return RedirectToAction("Details", "Audiobook", new { detale=slug});
+            return RedirectToAction("Details", "Audiobook", new { AudioId=AudioId});
         }
     }
 }
