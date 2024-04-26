@@ -2,14 +2,17 @@
 @{
     int raz = 1;      
 }
+
 <div class="container">
 <form action="/kategorie/index" method="post">
     <label for="categoryFilter" class="form-label ms-2">Wyszukaj kategorie:</label>  
         <div class="row m-2">
         <input type="text" class="form-control col-5 me-2" id="categoryFilter" value="@ViewBag.Content" name="tresc" style="width: 25%">
-        <button type="submit" class="btn btn-primary col-1">Wyślij</button>
+        <button type="submit" class="btn btn-primary col-1">Szukaj</button>
+            
         </div>
 </form>
+    <a href="/Kategorie/NewCategory"><button style="width: 115px" class=" ms-2 btn btn-success col-1">Dodaj nową</button></a>
 @foreach (var kategoria in Model)
 {
     <div class="row m-2">
@@ -22,6 +25,7 @@
     </div>
     
 }
+    
 <nav aria-label="...">
     <ul class="pagination justify-content-center active">
         <li class="page-item">
@@ -49,5 +53,5 @@
             </li>
         }        
     </ul>
-</nav>
+</nav>    
 </div>

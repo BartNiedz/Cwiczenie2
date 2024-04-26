@@ -83,6 +83,30 @@ namespace WolneLekturyCwiczenia.Controllers
 
             return View(query);
         }
+        //[HttpPost]
+        public IActionResult NewCategory()
+        {
+            
+
+            return View();
+        }
+        public IActionResult AddCategory(Category data)
+        {
+            string href = data.Href;
+            string url = data.Url;
+            string name = data.Name;
+            string slug = data.Slug;
+
+            Category category = new Category();
+            category.Name = name;
+            category.Slug = slug;
+            category.Href = href;
+            category.Url = url;
+
+            _bazadanych.CreateCategory(category);
+
+            return View();
+        }
 
     }
 }
