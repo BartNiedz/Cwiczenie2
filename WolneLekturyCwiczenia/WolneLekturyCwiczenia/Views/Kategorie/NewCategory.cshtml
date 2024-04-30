@@ -1,37 +1,30 @@
-﻿@model WolneLekturyCwiczenia.Models.SQL.Table.Category
-    
+﻿@model WolneLekturyCwiczenia.Models.SQL.Table.Category    
 @{
 }
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-    <div class="container">
-        <form action="/Kategorie/NewCategory" method="post" class="row">
-            <div class="container row">
-                <div class="col-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
-                    <label for="exampleFormControlInput1">Dodaj url</label>
-                    <input type="name" class="form-control" name="url" id="exampleFormControlInput1" placeholder="Url">
-                </div>
-                <div class="col-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
-                    <label for="exampleFormControlInput1">Dodaj href</label>
-                    <input type="name" class="form-control" name="href" id="exampleFormControlInput1" placeholder="Href">
-                </div>
-                <div class="col-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
-                    <label for="exampleFormControlInput1">Dodaj name</label>
-                    <input type="name" class="form-control" name="name" id="exampleFormControlInput1" placeholder="Name">
-                </div>
-                <div class="col-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
-                    <label for="exampleFormControlInput1">Dodaj slug</label>
-                    <input type="name" class="form-control" name="slug" id="exampleFormControlInput1" placeholder="Slug">
-                </div>
-            </div>  
-            <div class="text-center"><input type="submit" value="Dodaj" class="btn btn-success mt-2"></input></div>
-        </form>
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+    <form action="/Kategorie/AddCategory" method="post">
+       
+    <div class="mb-3">
+        <label class="form-label">Dodaj url</label>
+        <input type="name" asp-for="Url" class="form-control" placeholder="url" >
     </div>
-</body>
-</html>
+    <div class="mb-3">
+        <label class="form-label">Dodaj href</label>
+            <input type="name" asp-for="Href" class="form-control" placeholder="href" >
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Dodaj name</label>
+            <input type="name" asp-for="Name" class="form-control" placeholder="name" >
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Dodaj slug</label>
+            <input type="name" asp-for="Slug" class="form-control" placeholder="slug">
+    </div>
+        <button type="submit" class="btn btn-success">Dodaj</button>
+    
+</form>
+        </div>
+    </div>
+</div>

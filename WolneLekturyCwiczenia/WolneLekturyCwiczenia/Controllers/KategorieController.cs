@@ -3,6 +3,7 @@ using WolneLekturyCwiczenia.Models;
 using WolneLekturyCwiczenia.Models.Data;
 using WolneLekturyCwiczenia.Models.SQL;
 using WolneLekturyCwiczenia.Models.SQL.Table;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace WolneLekturyCwiczenia.Controllers
 {
@@ -85,28 +86,15 @@ namespace WolneLekturyCwiczenia.Controllers
         }
         //[HttpPost]
         public IActionResult NewCategory()
-        {
-            
+        {          
 
             return View();
         }
-        public IActionResult AddCategory(Category data)
+        public IActionResult AddCategory(Category category)
         {
-            string href = data.Href;
-            string url = data.Url;
-            string name = data.Name;
-            string slug = data.Slug;
-
-            Category category = new Category();
-            category.Name = name;
-            category.Slug = slug;
-            category.Href = href;
-            category.Url = url;
-
             _bazadanych.CreateCategory(category);
 
-            return View();
+            return RedirectToAction("Index", "Kategorie");
         }
-
     }
 }

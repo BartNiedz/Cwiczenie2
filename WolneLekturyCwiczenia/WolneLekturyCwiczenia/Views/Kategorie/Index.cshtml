@@ -1,57 +1,75 @@
 ﻿@model List<WolneLekturyCwiczenia.Models.SQL.Table.Category>
 @{
-    int raz = 1;      
+    int raz = 1;
 }
 
 <div class="container">
-<form action="/kategorie/index" method="post">
-    <label for="categoryFilter" class="form-label ms-2">Wyszukaj kategorie:</label>  
-        <div class="row m-2">
-        <input type="text" class="form-control col-5 me-2" id="categoryFilter" value="@ViewBag.Content" name="tresc" style="width: 25%">
-        <button type="submit" class="btn btn-primary col-1">Szukaj</button>
-            
-        </div>
-</form>
-    <a href="/Kategorie/NewCategory"><button style="width: 115px" class=" ms-2 btn btn-success col-1">Dodaj nową</button></a>
-@foreach (var kategoria in Model)
-{
-    <div class="row m-2">
-        <div class="col-6" style="border: 1px solid black; border-radius: 5px; background-color:antiquewhite">
-            <a name="tresc" href="/Kategorie/KategorieAudiobooks?kategoria=@kategoria.Name">@kategoria.Name</a>
-        </div>
-        <div class="col-6" style="border: 1px solid black; border-radius: 5px; background-color:antiquewhite">
-            <a href="@kategoria.Href">@kategoria.Href</a>
+
+    <div class="row">
+        <form action="/kategorie/index" method="post">
+            <div class="alert alert-secondary mt-4">
+                <div class="col-12">
+                    <h6>Wyszukiwarka</h6>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" id="categoryFilter" value="@ViewBag.Content" name="tresc">
+                        <button class="btn btn-primary" type="submit" id="button-addon2">Szukaj</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-2">
+            <a href="/Kategorie/NewCategory" class="btn btn-success ">Dodaj nową</a>
         </div>
     </div>
-    
-}
-    
-<nav aria-label="...">
-    <ul class="pagination justify-content-center active">
-        <li class="page-item">
-            @if (ViewBag.Previous > 0)
-            {
-                <a href="/kategorie/index?page=@ViewBag.Previous" class="page-link">Poprzednia</a>
-            }
-        </li>
-        @while (raz <= ViewBag.LiczbaStron)
+
+    <div class="row">
+
+        @foreach (var kategoria in Model)
         {
-            if (ViewBag.Page == raz)
-            {
-                <li class="page-item active"><a class="page-link" href="/kategorie/index?page=@raz">@raz</a></li>
-            }
-            else
-            {
-                <li class="page-item "><a class="page-link" href="/kategorie/index?page=@raz">@raz</a></li>
-            }            
-            raz++;            
-        } 
-        @if (ViewBag.Next <= ViewBag.LiczbaStron)
-        {
+            <div class="col-6">
+                <div class="p-2 mb-2" style="border: 1px solid black; border-radius: 5px; background-color:antiquewhite;">
+                    <a name="tresc" href="/Kategorie/KategorieAudiobooks?kategoria=@kategoria.Name">@kategoria.Name</a>
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="p-2 mb-2" style="border: 1px solid black; border-radius: 5px; background-color:antiquewhite">
+                    <a href="@kategoria.Href">@kategoria.Href</a>
+                </div>
+            </div>
+        }
+
+    </div>
+
+    <nav aria-label="...">
+        <ul class="pagination justify-content-center active">
             <li class="page-item">
-                <a class="page-link" href="/kategorie/index?page=@ViewBag.Next">Następna</a>
+                @if (ViewBag.Previous > 0)
+                {
+                    <a href="/kategorie/index?page=@ViewBag.Previous" class="page-link">Poprzednia</a>
+                }
             </li>
-        }        
-    </ul>
-</nav>    
+            @while (raz <= ViewBag.LiczbaStron)
+            {
+                if (ViewBag.Page == raz)
+                {
+                    <li class="page-item active"><a class="page-link" href="/kategorie/index?page=@raz">@raz</a></li>
+                }
+                else
+                {
+                    <li class="page-item "><a class="page-link" href="/kategorie/index?page=@raz">@raz</a></li>
+                }
+                raz++;
+            }
+            @if (ViewBag.Next <= ViewBag.LiczbaStron)
+            {
+                <li class="page-item">
+                    <a class="page-link" href="/kategorie/index?page=@ViewBag.Next">Następna</a>
+                </li>
+            }
+        </ul>
+    </nav>
 </div>
