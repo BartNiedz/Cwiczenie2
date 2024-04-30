@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MySqlConnector;
 using WolneLekturyCwiczenia.Models;
 using WolneLekturyCwiczenia.Models.Data;
 using WolneLekturyCwiczenia.Models.SQL;
@@ -93,6 +94,19 @@ namespace WolneLekturyCwiczenia.Controllers
         public IActionResult AddCategory(Category category)
         {
             _bazadanych.CreateCategory(category);
+
+            return RedirectToAction("Index", "Kategorie");
+        }
+        public IActionResult EditFormCategory(int categoryid)
+        {
+
+           Category category = _bazadanych.Get2Category(categoryid);
+
+            return View(category);
+        }
+        public IActionResult EditCategory(Category category)
+        {
+           _bazadanych.EditCategory(category);
 
             return RedirectToAction("Index", "Kategorie");
         }

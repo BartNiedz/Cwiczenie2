@@ -15,5 +15,7 @@ namespace WolneLekturyCwiczenia.Models.SQL
         List<Audio> GetAudioDB();
         List<Formularz> GetFormularz();
         Audio GetDetails(int AudioId);
+        void EditCategory(Category model);
+        Category Get2Category(int categoryId);
     }
 }

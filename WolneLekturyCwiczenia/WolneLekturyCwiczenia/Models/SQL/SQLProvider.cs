@@ -33,6 +33,11 @@ namespace WolneLekturyCwiczenia.Models.SQL
             IDatabase db = GetDatabase();  
             db.Save(model);
         }
+        public void EditCategory(Category model)
+        {
+            IDatabase db = GetDatabase();
+            db.Update(model);
+        }
         public void CreateEpoch(Epoch model)
         {
             IDatabase db = GetDatabase();
@@ -66,6 +71,7 @@ namespace WolneLekturyCwiczenia.Models.SQL
             Category category2 = db.FirstOrDefault<Category>("Select * from Category where CategoryId = @cId", new { @cId = categoryId });
             return category2;
         }
+       
         public List<Epoch> GetEpochsDB()
         {
             IDatabase db = GetDatabase();
