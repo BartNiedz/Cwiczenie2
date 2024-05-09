@@ -38,6 +38,16 @@ namespace WolneLekturyCwiczenia.Models.SQL
             IDatabase db = GetDatabase();
             db.Update(model);
         }
+        public void EditEpoch(Epoch model)
+        {
+            IDatabase db = GetDatabase();
+            db.Update(model);
+        }
+        public void EditAudio(Audio model)
+        {
+            IDatabase db = GetDatabase();
+            db.Update(model);
+        }
         public void CreateEpoch(Epoch model)
         {
             IDatabase db = GetDatabase();
@@ -71,7 +81,19 @@ namespace WolneLekturyCwiczenia.Models.SQL
             Category category2 = db.FirstOrDefault<Category>("Select * from Category where CategoryId = @cId", new { @cId = categoryId });
             return category2;
         }
-       
+        public Epoch Get2Epoch(int epochId)
+        {
+            IDatabase db = GetDatabase();
+            Epoch epoch2 = db.FirstOrDefault<Epoch>("Select * from Epoch where EpochId = @eId", new { @eId = epochId });
+            return epoch2;
+        }
+        public Audio Get2Audio(int audioId)
+        {
+            IDatabase db = GetDatabase();
+            Audio audio2 = db.FirstOrDefault<Audio>("Select * from Audio where AudioId = @aId", new { @aId = audioId });
+            return audio2;
+        }
+
         public List<Epoch> GetEpochsDB()
         {
             IDatabase db = GetDatabase();

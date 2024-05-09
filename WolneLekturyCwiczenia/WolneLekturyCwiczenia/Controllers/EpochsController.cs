@@ -56,7 +56,7 @@ namespace WolneLekturyCwiczenia.Controllers
             List<Epoch> epochs = _bazadanych.GetEpochsDB();
             List<Epoch> filtr = epochs.Where(cos => cos.Name.ToLower().Contains(tresc.ToLower())).ToList();
 
-            ViewBag.Content = tresc;
+            ViewBag.ContentEpoch = tresc;
 
             return View(filtr);
         }
@@ -68,6 +68,29 @@ namespace WolneLekturyCwiczenia.Controllers
             IEnumerable<Audiobooks> query = audiobooks.Where(audiobooks =>  audiobooks.epoch == epoka);
 
             return View(query);
+        }
+
+        public IActionResult NewEpoch()
+        {
+            return View();
+        }
+        public IActionResult AddEpoch(Epoch epoch)
+        {
+            _bazadanych.CreateEpoch(epoch);
+
+            return RedirectToAction("Epochs", "Epochs");
+        }
+        public IActionResult EditFromEpoch(int epochid)
+        {
+            Epoch epoch = _bazadanych.Get2Epoch(epochid);
+
+            return View(epoch);
+        }
+        public IActionResult EditEpoch(Epoch epoch)
+        {
+            _bazadanych.EditEpoch(epoch);
+
+            return RedirectToAction("Epochs", "Epochs");
         }
     }
 }

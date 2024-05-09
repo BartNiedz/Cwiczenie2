@@ -136,5 +136,27 @@ namespace WolneLekturyCwiczenia.Controllers
 
             return View(kawa);
         }
+        public IActionResult NewAudio() 
+        {
+            return View(); 
+        }
+        public IActionResult AddAudio(Audio audio)
+        {
+            _bazadanych.CreateAudio(audio);
+
+            return RedirectToAction("Audiobooks", "Audiobook");
+        }
+        public IActionResult EditFormAudio(int audioid)
+        {
+            Audio audio = _bazadanych.Get2Audio(audioid);
+            return View(audio);
+        }
+        public IActionResult EditAudio(Audio audio)
+        {
+            _bazadanych.EditAudio(audio);
+
+            return RedirectToAction("Audiobooks", "Audiobook");
+        }
+
     }
 }

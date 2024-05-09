@@ -1,0 +1,66 @@
+﻿@model WolneLekturyCwiczenia.Models.SQL.Table.Audio
+@{
+}
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <form action="/Audiobook/AddAudio" method="post">
+
+                <div class="mb-3">
+                    <label class="form-label">Dodaj kind</label>
+                    <input type="name" asp-for="Kind" class="form-control" placeholder="kind">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Dodaj full_sort_key</label>
+                    <input type="name" asp-for="Full_sort_key" class="form-control" placeholder="full_sort_key">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Dodaj title</label>
+                    <input type="name" asp-for="Title" class="form-control" placeholder="title">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Dodaj url</label>
+                    <input type="name" asp-for="Url" class="form-control" placeholder="url">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Dodaj cover_color</label>
+                    <input type="name" asp-for="Cover_color" class="form-control" placeholder="cover_color">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Dodaj author</label>
+                    <input type="name" asp-for="Author" class="form-control" placeholder="author">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Dodaj cover</label>
+                    <input type="name" asp-for="Cover" class="form-control" placeholder="cover">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Dodaj epoch</label>
+                    <input type="name" asp-for="Epoch" class="form-control" placeholder="epoch">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Dodaj href</label>
+                    <input type="name" asp-for="Href" class="form-control" placeholder="href">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Dodaj genre</label>
+                    <input type="name" asp-for="Genre" class="form-control" placeholder="genre">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Dodaj simple_thumb</label>
+                    <input type="name" asp-for="Simple_thumb" class="form-control" placeholder="simple_thumb">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Dodaj slug</label>
+                    <input type="name" asp-for="Slug" class="form-control" placeholder="slug">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Dodaj cover_thumb</label>
+                    <input type="name" asp-for="Cover_thumb" class="form-control" placeholder="Cover_thumb">
+                </div>
+                <button type="submit" class="btn btn-success">Dodaj</button>
+
+            </form>
+        </div>
+    </div>
+</div>

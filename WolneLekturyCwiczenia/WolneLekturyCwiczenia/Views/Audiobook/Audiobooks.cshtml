@@ -4,75 +4,83 @@
     List<WolneLekturyCwiczenia.Models.SQL.Table.Category> listaKategorii = ViewBag.ListaKategorii as List<WolneLekturyCwiczenia.Models.SQL.Table.Category>;
 }
 <div class="container mt-2">
-<form action="/audiobook/audiobooks" method="post">
-    <div class="row g-2 align-items-center">
-        <div class="col text-center">
-            <label for="audiobookFilter" class="form-label ms-2">Wyszukaj audiobook:</label>
-        </div>
-        <div class="col">
+    <form action="/audiobook/audiobooks" method="post">
+        <div class="row g-2 align-items-center">
+            <div class="col text-center">
+                <label for="audiobookFilter" class="form-label ms-2">Wyszukaj audiobook:</label>
+            </div>
+            <div class="col">
                 <input class="form-control" for="name" type="text" id="categoryFilter" name="szukaj" style="width:100%" value="@ViewBag.Szukaj">
-        </div>
-        <div class="col text-center" >
-            <label for="audioselect">Wybierz epoke:</label>
-        </div>
-        <div class="col">
-            <select class="form-select" name="epoki" id="epokiselect">    
-                <option ></option>
-                @foreach (var nazwaEpoki in listaEpok.OrderBy(item => item.Name))
-                {
+            </div>
+            <div class="col text-center">
+                <label for="audioselect">Wybierz epoke:</label>
+            </div>
+            <div class="col">
+                <select class="form-select" name="epoki" id="epokiselect">
+                    <option></option>
+                    @foreach (var nazwaEpoki in listaEpok.OrderBy(item => item.Name))
+                    {
                         <option value="@nazwaEpoki.Name">@nazwaEpoki.Name</option>
-                    }                
-            </select>
-        </div>
-        <div class="col text-center">
-            <label for="audioselect">Wybierz kategorie:</label>
-        </div>
-        <div class="col">
-            <select class="form-select" name="kategorie" id="kategorieselect">
-                <option ></option>
+                    }
+                </select>
+            </div>
+            <div class="col text-center">
+                <label for="audioselect">Wybierz kategorie:</label>
+            </div>
+            <div class="col">
+                <select class="form-select" name="kategorie" id="kategorieselect">
+                    <option></option>
                     @foreach (var nazwaKategorii in listaKategorii.OrderByDescending(item => item.Name))
-                {
+                    {
                         <option value="@nazwaKategorii.Name">@nazwaKategorii.Name</option>
-                }
-            </select>
+                    }
+                </select>
+            </div>
+            <div class="col text-center">
+                <button type="submit" class="btn btn-primary">Wyślij</button>
+            </div>
         </div>
-        <div class="col text-center">
-            <button type="submit" class="btn btn-primary">Wyślij</button>
+    </form>    
+
+    <div class="row m-2">
+        <div class="col-2">
+            <a href="/Audiobook/NewAudio" class="btn btn-success ">Dodaj nową</a>
         </div>
     </div>
-</form>
 
-<div class="row container-fluid">
-        
-@foreach (var audiobooks in Model)
-{
-        <div class="col-2" style="padding:0px;">
+    <div class="row container-fluid">
 
-            <div style="border-radius:5px; border: 1px solid black; background-color:antiquewhite; height:510px; margin:5px;">
-                <a href="/Klik/go?AudioId=@audiobooks.AudioId"><img class="img-fluid p-1" src="@audiobooks.Simple_thumb" /></a>
+        @foreach (var audiobooks in Model)
+        {
+            <div class="col-2" style="padding:0px;">
 
-                <p class="text-center">@audiobooks.Author</p>
-   <p class="text-center">@audiobooks.Genre</p>
-   <p class="text-center">@audiobooks.Title</p>
-   <p class="text-center">@audiobooks.Epoch</p>
+                <div style="border-radius:5px; border: 1px solid black; background-color:antiquewhite; height:510px; margin:5px;">
+                    <a href="/Klik/go?AudioId=@audiobooks.AudioId"><img class="img-fluid p-1" src="@audiobooks.Simple_thumb" /></a>
 
-   </div>
+                    <p class="text-center">@audiobooks.Author</p>
+                    <p class="text-center">@audiobooks.Genre</p>
+                    <p class="text-center">@audiobooks.Title</p>
+                    <p class="text-center">@audiobooks.Epoch</p>
+                    <div class="g-1 text-center">
+                        <a href="/Audiobook/EditFormAudio?audioid=@audiobooks.AudioId" class="btn btn-success">Edytuj</a>
+                    </div>
+                </div>
 
-        </div>       
-}    
-</div>
-<div class="row" style="text-align:center; display:block;">
-    @if (ViewBag.PoprzedniaStrona > 0)
-    {
-        <a type="button" class="btn btn-outline-secondary col-6"
-           href="/audiobook/audiobooks?page=@ViewBag.PoprzedniaStrona" style="width:auto">Poprzednia</a>
-    }
+            </div>
+        }
+    </div>
+    <div class="row" style="text-align:center; display:block;">
+        @if (ViewBag.PoprzedniaStrona > 0)
+        {
+            <a type="button" class="btn btn-outline-secondary col-6"
+               href="/audiobook/audiobooks?page=@ViewBag.PoprzedniaStrona" style="width:auto">Poprzednia</a>
+        }
 
-    @if (ViewBag.NastepnaStrona <= ViewBag.PageCount)
-    {
-        <a type="button" class="btn btn-outline-secondary col-6"
-           href="/audiobook/audiobooks?page=@ViewBag.NastepnaStrona" style="width:auto">Następna</a>
-    }
+        @if (ViewBag.NastepnaStrona <= ViewBag.PageCount)
+        {
+            <a type="button" class="btn btn-outline-secondary col-6"
+               href="/audiobook/audiobooks?page=@ViewBag.NastepnaStrona" style="width:auto">Następna</a>
+        }
 
-</div>
+    </div>
 </div>

@@ -17,5 +17,9 @@ namespace WolneLekturyCwiczenia.Models.SQL
         Audio GetDetails(int AudioId);
         void EditCategory(Category model);
         Category Get2Category(int categoryId);
+        Epoch Get2Epoch(int epochId);
+        Audio Get2Audio(int audioId);
+        void EditEpoch(Epoch model);
+        void EditAudio(Audio model);
     }
 }
