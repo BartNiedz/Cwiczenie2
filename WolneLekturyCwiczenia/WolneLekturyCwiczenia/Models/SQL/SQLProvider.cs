@@ -101,12 +101,20 @@ namespace WolneLekturyCwiczenia.Models.SQL
             List<Epoch> epoch = db.Fetch<Epoch>("Select * from Epoch");
 
             return epoch;
-        }
+        }       
         public List<Audio> GetAudioDB()
         {
             IDatabase db = GetDatabase();
 
             List<Audio> audio = db.Fetch<Audio>("Select * from Audio");
+
+            return audio;
+        }
+        public List<Audio> GetAudioJS()
+        {
+            IDatabase db = GetDatabase();
+
+            List<Audio> audio = db.Fetch<Audio>("Select * from Audio order by Title asc Limit 20 offset 10");
 
             return audio;
         }

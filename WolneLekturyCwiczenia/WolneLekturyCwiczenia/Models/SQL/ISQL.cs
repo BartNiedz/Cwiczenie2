@@ -13,6 +13,7 @@ namespace WolneLekturyCwiczenia.Models.SQL
         List<Category> GetCategory();
         List<Epoch> GetEpochsDB();
         List<Audio> GetAudioDB();
+        List<Audio> GetAudioJS();
         List<Formularz> GetFormularz();
         Audio GetDetails(int AudioId);
         void EditCategory(Category model);

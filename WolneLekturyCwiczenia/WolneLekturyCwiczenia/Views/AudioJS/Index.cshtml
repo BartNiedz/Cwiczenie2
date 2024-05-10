@@ -1,0 +1,35 @@
+﻿@model List<WolneLekturyCwiczenia.Models.SQL.Table.Audio>
+@{
+}
+<table id="myTable" class="display">
+    <thead>
+        <tr>
+            <th>Autor</th>
+            <th>Tytuł</th>
+            <th>Gatunek</th>
+            <th>Epoka</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var audio in Model)
+        {
+        <tr>            
+                <td>@audio.Author</td>
+                <td>@audio.Title</td>
+                <td>@audio.Genre</td>
+                <td>@audio.Epoch</td>
+        </tr>  
+        }
+    </tbody>
+</table>
+
+
+
+@section Scripts {
+<script>
+    $(document).ready( function () {
+        $('#myTable').DataTable();
+    } );
+    </script>
+}
