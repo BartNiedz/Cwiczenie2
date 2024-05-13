@@ -9,10 +9,18 @@ namespace WolneLekturyCwiczenia.Controllers
     {
         private IDataRepository _data;
         public ISQL _bazadanych = new SQLProvider();
-        public IActionResult Index()
+        public IActionResult Index(/*int page = 1*/)
         {
-            List<Audio> audiojs = _bazadanych.GetAudioJS();
-            return View(audiojs);
+           /* int take = 10;
+            int skip = (page -1) * take;*/
+            
+            List<Audio> audiojs = _bazadanych.GetAudioJS();                   
+            /*List<Audio> strona = audiojs.Skip(skip).Take(take).ToList();    
+            int allCount = audiojs.Count();
+            int pageCount = (allCount / take) + 1;*/
+
+
+            return View(/*strona*/audiojs);
         }
         public AudioJSController(IDataRepository data)
         {

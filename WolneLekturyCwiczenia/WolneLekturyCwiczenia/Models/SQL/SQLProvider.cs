@@ -114,7 +114,7 @@ namespace WolneLekturyCwiczenia.Models.SQL
         {
             IDatabase db = GetDatabase();
 
-            List<Audio> audio = db.Fetch<Audio>("Select * from Audio order by Title asc Limit 20 offset 10");
+            List<Audio> audio = db.Fetch<Audio>("Select * from Audio order by Title asc Limit 60 offset 10");
 
             return audio;
         }
