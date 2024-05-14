@@ -13,7 +13,8 @@ namespace WolneLekturyCwiczenia.Models.SQL
         List<Category> GetCategory();
         List<Epoch> GetEpochsDB();
         List<Audio> GetAudioDB();
-        List<Audio> GetAudioJS();
+        List<Audio> GetAudioJS(int limit, int page);
+        List<Category> GetCategoryJS(int limit, int page);
         List<Formularz> GetFormularz();
         Audio GetDetails(int AudioId);
         void EditCategory(Category model);
@@ -22,5 +23,9 @@ namespace WolneLekturyCwiczenia.Models.SQL
         Audio Get2Audio(int audioId);
         void EditEpoch(Epoch model);
         void EditAudio(Audio model);
+        int GetElementCount();
+        int GetEpochElementCount();
+        int GetCategoryElementCount();
+        List<Epoch> GetEpochJS(int limit, int page);
     }
 }

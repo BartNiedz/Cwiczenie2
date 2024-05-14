@@ -1,0 +1,35 @@
+﻿<table id="myTable" class="display">
+    <thead>
+        <tr>
+            <th>Url</th>
+            <th>Href</th>
+            <th>Name</th>
+            <th>Slug</th>
+        </tr>
+    </thead>
+</table>
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+
+            const table = new DataTable('#myTable', {
+                ajax: '/epochsjs/_getepochs',
+                lengthMenu: [
+                    [10, 20, 30],
+                    [10, 20, 30]
+                ],
+                columns: [
+                    { data: 'url' },
+                    { data: 'href' },
+                    { data: 'name' },
+                    { data: 'slug' }
+                ],
+                order: [[0, 'desc']],
+                processing: true,
+                serverSide: true
+            });
+
+
+        });
+    </script>
+}

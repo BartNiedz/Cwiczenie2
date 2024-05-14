@@ -8,20 +8,9 @@
             <th>Tytuł</th>
             <th>Gatunek</th>
             <th>Epoka</th>
-
         </tr>
     </thead>
-    <tbody>
-        @foreach (var audio in Model)
-        {
-            <tr>
-                <td>@audio.Author</td>
-                <td>@audio.Title</td>
-                <td>@audio.Genre</td>
-                <td>@audio.Epoch</td>
-            </tr>
-        }
-    </tbody>
+ 
 </table>
 
 
@@ -29,7 +18,25 @@
 @section Scripts {
     <script>
         $(document).ready(function () {
-            $('#myTable').DataTable();
+
+            const table = new DataTable('#myTable', {
+                ajax: '/audiojs/_getaudiobooks',
+                lengthMenu: [
+                    [50, 100],
+                    [50, 100]
+                ],
+                columns: [
+                    { data: 'author' },
+                    { data: 'title' },
+                    { data: 'genre' },
+                    { data: 'epoch' }
+                ],
+                order: [[2, 'desc']],
+                processing: true,
+                serverSide: true
+            });
+
+
         });
     </script>
 }

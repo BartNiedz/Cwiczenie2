@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AffiliateNetwork.App.Models;
+using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using WolneLekturyCwiczenia.Models.Data;
 using WolneLekturyCwiczenia.Models.SQL;
 using WolneLekturyCwiczenia.Models.SQL.Table;
@@ -9,19 +11,36 @@ namespace WolneLekturyCwiczenia.Controllers
     {
         private IDataRepository _data;
         public ISQL _bazadanych = new SQLProvider();
-        public IActionResult Index(/*int page = 1*/)
+        public IActionResult Index()
         {
-           /* int take = 10;
-            int skip = (page -1) * take;*/
-            
-            List<Audio> audiojs = _bazadanych.GetAudioJS();                   
-            /*List<Audio> strona = audiojs.Skip(skip).Take(take).ToList();    
-            int allCount = audiojs.Count();
-            int pageCount = (allCount / take) + 1;*/
+            int limit = 50;
+
+            List<Audio> audiojs = _bazadanych.GetAudioJS(limit, 1);
 
 
-            return View(/*strona*/audiojs);
+            return View(audiojs);
         }
+
+        //audiojs/_getaudiobooks
+        public JsonResult _GetAudiobooks(DTParameters model)
+        {
+            int page = (model.Start / model.Length)+1;
+            List<Audio> audiojs = _bazadanych.GetAudioJS(50, page);
+
+            int a = _bazadanych.GetElementCount();
+            DataTableModel m = new DataTableModel()
+            {
+                data= audiojs,
+                recordsFiltered=a,
+                recordsTotal=a,
+                draw= model.Draw
+            };
+
+            return Json(m);
+        }
+
+
+
         public AudioJSController(IDataRepository data)
         {
             _data = data;

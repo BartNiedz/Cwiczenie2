@@ -1,6 +1,7 @@
 ﻿using NPoco;
 using MySqlConnector;
 using WolneLekturyCwiczenia.Models.SQL.Table;
+using System.Collections.Generic;
 
 namespace WolneLekturyCwiczenia.Models.SQL
 {
@@ -30,7 +31,7 @@ namespace WolneLekturyCwiczenia.Models.SQL
         }
         public void CreateCategory(Category model)
         {
-            IDatabase db = GetDatabase();  
+            IDatabase db = GetDatabase();
             db.Save(model);
         }
         public void EditCategory(Category model)
@@ -71,8 +72,8 @@ namespace WolneLekturyCwiczenia.Models.SQL
         {
             IDatabase db = GetDatabase();
 
-            List<Category> category =  db.Fetch<Category>("Select * from Category");
-            
+            List<Category> category = db.Fetch<Category>("Select * from Category");
+
             return category;
         }
         public Category Get2Category(int categoryId)
@@ -101,7 +102,7 @@ namespace WolneLekturyCwiczenia.Models.SQL
             List<Epoch> epoch = db.Fetch<Epoch>("Select * from Epoch");
 
             return epoch;
-        }       
+        }
         public List<Audio> GetAudioDB()
         {
             IDatabase db = GetDatabase();
@@ -110,13 +111,55 @@ namespace WolneLekturyCwiczenia.Models.SQL
 
             return audio;
         }
-        public List<Audio> GetAudioJS()
+
+
+        public int GetElementCount()
         {
             IDatabase db = GetDatabase();
 
-            List<Audio> audio = db.Fetch<Audio>("Select * from Audio order by Title asc Limit 60 offset 10");
+            int elementCount = db.Fetch<int>("Select count(*) from Audio").FirstOrDefault();
+
+            return elementCount;
+        }
+        public int GetEpochElementCount()
+        {
+            IDatabase db = GetDatabase();
+
+            int elementCount = db.Fetch<int>("Select count(*) from Epoch").FirstOrDefault();
+
+            return elementCount;
+        }
+        public int GetCategoryElementCount()
+        {
+            IDatabase db = GetDatabase();
+
+            int elementCount = db.Fetch<int>("Select count(*) from Category").FirstOrDefault();
+
+            return elementCount;
+        }
+        public List<Audio> GetAudioJS(int limit, int page)
+        {
+            IDatabase db = GetDatabase();
+
+            int offset = limit * (page - 1);
+
+            List<Audio> audio = db.Fetch<Audio>("Select * from Audio order by Title asc Limit @l offset @o", new { @l = limit, @o = offset });
 
             return audio;
+        }
+        public List<Epoch> GetEpochJS(int limit, int page)
+        {
+            IDatabase db = GetDatabase();
+            int offset = limit * (page - 1);
+            List<Epoch> epoch = db.Fetch<Epoch>("Select * from Epoch order by Name asc limit @l offset @o", new {@l = limit, @o = offset });
+            return epoch;
+        }
+        public List<Category> GetCategoryJS(int limit, int page)
+        {
+            IDatabase db = GetDatabase();
+            int offset = limit * (page - 1);
+            List<Category> category = db.Fetch<Category>("Select * from Category order by Name asc limit @l offset @o", new { @l = limit, @o = offset });
+            return category;
         }
         public List<Formularz> GetFormularz()
         {
