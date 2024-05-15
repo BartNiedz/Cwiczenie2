@@ -19,7 +19,7 @@ namespace WolneLekturyCwiczenia.Controllers
             
             
 
-            return RedirectToAction("Details", "Audiobook", new { AudioId = AudioId });
+            return RedirectToAction("Details", "Audiobook", new { AudioId = AudioId});
         }
     }
 }

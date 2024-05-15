@@ -143,10 +143,23 @@ namespace WolneLekturyCwiczenia.Models.SQL
 
             int offset = limit * (page - 1);
 
+            //  List<Audio> audio = db.FetchMultiple<Audio,int>("call defaultdb.GetAudiobooks(5, 100, 'test');", new { @l = limit, @o = offset });
+
             List<Audio> audio = db.Fetch<Audio>("Select * from Audio order by Title asc Limit @l offset @o", new { @l = limit, @o = offset });
 
             return audio;
         }
+
+       /* public List<Audio> GetAudioSP(int limit, int page, string search)
+        {
+            IDatabase db = GetDatabase();
+
+            int offset = limit * (page - 1);
+
+            List<Audio> audio = db.FetchMultiple<Audio, int>("call defaultdb.GetAudiobooks(@l, @o, @s);", new { @l = limit, @o = offset, @s =search });
+
+            return audio;
+        }*/
         public List<Epoch> GetEpochJS(int limit, int page)
         {
             IDatabase db = GetDatabase();
