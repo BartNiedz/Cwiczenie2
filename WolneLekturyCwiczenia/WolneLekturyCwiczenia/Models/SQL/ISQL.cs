@@ -27,5 +27,6 @@ namespace WolneLekturyCwiczenia.Models.SQL
         int GetEpochElementCount();
         int GetCategoryElementCount();
         List<Epoch> GetEpochJS(int limit, int page);
+        List<Audio> GetAudioSP(int limit, int page, string search);
     }
 }

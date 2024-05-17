@@ -2,6 +2,7 @@
 using MySqlConnector;
 using WolneLekturyCwiczenia.Models.SQL.Table;
 using System.Collections.Generic;
+using System.Net;
 
 namespace WolneLekturyCwiczenia.Models.SQL
 {
@@ -150,21 +151,30 @@ namespace WolneLekturyCwiczenia.Models.SQL
             return audio;
         }
 
-       /* public List<Audio> GetAudioSP(int limit, int page, string search)
+        public List<Audio> GetAudioSP(int limit, int page, string search)
         {
+            //IDatabase db = GetDatabase();
+
+            // int offset = limit * (page - 1);
+
+            // Tuple<List<Audio>, int > audio = db.FetchMultiple<Audio, int>("call defaultdb.GetAudiobooks(@l, @o, @s); select count(*) from Audio", new { @l = limit, @o = offset, @s = search });
+
             IDatabase db = GetDatabase();
+            var r = db.FetchMultiple<Audio, int>("select * from Audio;select count(*) from Audio;");
 
-            int offset = limit * (page - 1);
+            var audios = r.Item1;
+            var count = r.Item2;
+            /*List<Audio> audio = db.Fetch<Audio>("Select * from Audio where lower(@s) like concat('%',lower(@s),'%')  order by Title asc Limit @l offset @o", new { @l = limit, @o = offset, @s = search });*/
 
-            List<Audio> audio = db.FetchMultiple<Audio, int>("call defaultdb.GetAudiobooks(@l, @o, @s);", new { @l = limit, @o = offset, @s = search });
+            //return audio;
 
-            return audio;
-        }*/
+            return null;
+        }
         public List<Epoch> GetEpochJS(int limit, int page)
         {
             IDatabase db = GetDatabase();
             int offset = limit * (page - 1);
-            List<Epoch> epoch = db.Fetch<Epoch>("Select * from Epoch order by Name asc limit @l offset @o", new {@l = limit, @o = offset });
+            List<Epoch> epoch = db.Fetch<Epoch>("Select * from Epoch order by Name asc limit @l offset @o", new { @l = limit, @o = offset });
             return epoch;
         }
         public List<Category> GetCategoryJS(int limit, int page)
