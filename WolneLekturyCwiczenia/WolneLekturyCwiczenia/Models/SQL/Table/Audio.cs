@@ -22,5 +22,6 @@ namespace WolneLekturyCwiczenia.Models.SQL.Table
         public string Slug { get; set; }
         public string Cover_thumb { get; set; }
         //public object Liked { get; set; }
-    }
+        
+    }    
 }

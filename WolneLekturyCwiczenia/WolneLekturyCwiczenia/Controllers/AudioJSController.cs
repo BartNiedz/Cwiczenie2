@@ -15,8 +15,8 @@ namespace WolneLekturyCwiczenia.Controllers
         {
             int limit = 50;
             /*List<Audio> audiojs = _bazadanych.GetAudioJS(limit, 1);*/
-            List<Audio> audiojs = _bazadanych.GetAudioSP(limit, 1, "ntek");
-
+            List<Audio> audiojs = _bazadanych.GetAudioSP(limit, 1, "Antek");
+            
 
             return View(audiojs);
         }

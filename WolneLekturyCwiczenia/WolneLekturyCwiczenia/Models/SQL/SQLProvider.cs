@@ -151,7 +151,7 @@ namespace WolneLekturyCwiczenia.Models.SQL
             return audio;
         }
 
-        public List<Audio> GetAudioSP(int limit, int page, string search)
+        public List<Audio> GetAudioSP(int pLimit, int pPage, string pSearch)
         {
             //IDatabase db = GetDatabase();
 
@@ -160,15 +160,16 @@ namespace WolneLekturyCwiczenia.Models.SQL
             // Tuple<List<Audio>, int > audio = db.FetchMultiple<Audio, int>("call defaultdb.GetAudiobooks(@l, @o, @s); select count(*) from Audio", new { @l = limit, @o = offset, @s = search });
 
             IDatabase db = GetDatabase();
-            var r = db.FetchMultiple<Audio, int>("select * from Audio;select count(*) from Audio;");
-
-            var audios = r.Item1;
-            var count = r.Item2;
+            var r = db.FetchMultiple<Audio, int>("select * from Audio where lower(Title) like concat('%',lower(@s),'%') order by Title asc limit @l offset @o;select count(*) from Audio;", new { @l = pLimit, @o = pPage, @s = pSearch });
+            var ret = db.FetchMultiple<Audio, int>("call defaultdb.GetAudiobooks(@l, @o, @s);", new { @l = pLimit, @o = pPage, @s = pSearch });
+            var audios = ret.Item1;
+            var count = ret.Item2;
+            
             /*List<Audio> audio = db.Fetch<Audio>("Select * from Audio where lower(@s) like concat('%',lower(@s),'%')  order by Title asc Limit @l offset @o", new { @l = limit, @o = offset, @s = search });*/
 
             //return audio;
 
-            return null;
+            return audios;
         }
         public List<Epoch> GetEpochJS(int limit, int page)
         {
