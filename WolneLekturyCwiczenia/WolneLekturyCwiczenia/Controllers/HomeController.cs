@@ -24,7 +24,7 @@ namespace WolneLekturyCwiczenia.Controllers
         public IActionResult Index()
         {
             // klasa Asd
-            Asd asd = new Asd(2, 3);
+            Asd asd = new Asd(5, 6);
 
             int wynik = asd.Add();
 
@@ -70,13 +70,43 @@ namespace WolneLekturyCwiczenia.Controllers
             person.AddCustomer(klient3);
 
             //klasa Prostokat          
-            Prostokat prostokat = new Prostokat(10, 21);
+            //Prostokat prostokat = new Prostokat(10, 21);
 
-            int polePowierzchni = prostokat.PP();
+            //int polePowierzchni = prostokat.PP();
 
-            int obwod = prostokat.Obw();
+            //int obwod = prostokat.Obw();
 
-            int longer = prostokat.Longer();
+            //int longer = prostokat.Longer();
+
+            //klasa ProstokatBC
+            ProstokatBC prostokatBC = new ProstokatBC();
+            int x = 5;
+            int y = 5;
+            int polePow = prostokatBC.Pole();
+            int obw = prostokatBC.Obwod();
+            
+
+            //klasa Trojkat
+            Trojkat trojkat = new Trojkat(5, 7, 6);
+
+            int poleTrojkata = trojkat.Pole();
+
+            int obwTrojkata = trojkat.Obw();
+
+            int qwe = prostokatBC.Pole();
+            prostokatBC.x = 5;
+            prostokatBC.y = 5;
+
+
+            //Trojkat bez konstruktora
+
+            int _a = 5;
+            int _b = 7;
+            int _h = 6;
+
+            int ppTrojkata = (_a * _h) / 2;
+            int obwodTrojkata = (2 * _b) + _a;
+
             //klasa Klient
           //  Klient klient6 = new Klient("Adam", "Nowak", "PKO BP");
 

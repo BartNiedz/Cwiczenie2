@@ -1,6 +1,7 @@
 ﻿using AffiliateNetwork.App.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using WolneLekturyCwiczenia.Models;
 using WolneLekturyCwiczenia.Models.Data;
 using WolneLekturyCwiczenia.Models.SQL;
 using WolneLekturyCwiczenia.Models.SQL.Table;
@@ -15,7 +16,8 @@ namespace WolneLekturyCwiczenia.Controllers
         {
             int limit = 50;
             /*List<Audio> audiojs = _bazadanych.GetAudioJS(limit, 1);*/
-            List<Audio> audiojs = _bazadanych.GetAudioSP(limit, 1, "Antek");
+            FiltrAudio audiojs = _bazadanych.GetAudioSP(5 , 1, "Antek");
+
             
 
             return View(audiojs);

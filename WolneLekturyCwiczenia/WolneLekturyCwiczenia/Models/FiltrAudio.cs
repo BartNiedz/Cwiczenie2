@@ -1,10 +1,14 @@
-﻿using WolneLekturyCwiczenia.Models.SQL.Table;
+﻿using NPoco;
+using WolneLekturyCwiczenia.Models.SQL.Table;
 
 namespace WolneLekturyCwiczenia.Models
 {
+
     public class FiltrAudio
     {
-        int audioCount { get; set; }
-        List<Audio> audios { get; set; }
+       public int AudioCount { get; set; }
+       public List<Audio> Audios { get; set; }
+
+       
     }
 }

@@ -1,4 +1,4 @@
-﻿@model List<WolneLekturyCwiczenia.Models.SQL.Table.Audio>
+﻿@* @model List<WolneLekturyCwiczenia.Models.SQL.Table.Audio> *@
 @{
 }
 <table id="myTable" class="display">
@@ -31,7 +31,7 @@
                     { data: 'genre' },
                     { data: 'epoch' }
                 ],
-                order: [[2, 'desc']],
+                order: [[0, 'desc']],
                 processing: true,
                 serverSide: true
             });
