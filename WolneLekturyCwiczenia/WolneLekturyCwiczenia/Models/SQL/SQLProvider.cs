@@ -162,7 +162,7 @@ namespace WolneLekturyCwiczenia.Models.SQL
             audio.Audios = ret.Item1;
             audio.AudioCount = ret.Item2.FirstOrDefault();
             
-            return audio; /* return FiltrAudio */
+            return audio; 
         }
         public List<Epoch> GetEpochJS(int limit, int page)
         {

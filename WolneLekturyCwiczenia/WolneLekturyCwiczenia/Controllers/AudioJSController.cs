@@ -14,8 +14,8 @@ namespace WolneLekturyCwiczenia.Controllers
         public ISQL _bazadanych = new SQLProvider();
         public IActionResult Index()
         {
-            int limit = 50;
-            /*List<Audio> audiojs = _bazadanych.GetAudioJS(limit, 1);*/
+            
+            
             FiltrAudio audiojs = _bazadanych.GetAudioSP(5 , 1, "Antek");
 
             
